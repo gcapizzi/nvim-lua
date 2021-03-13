@@ -100,6 +100,13 @@ return require('packer').startup(function()
 			lualine.status()
 		end
 	}
+	use {
+		'ajh17/VimCompletesMe',
+		config = function()
+			vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+			vim.api.nvim_set_option('completeopt', 'menu')
+		end
+	}
 	use 'justinmk/vim-dirvish'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-repeat'
@@ -110,6 +117,5 @@ return require('packer').startup(function()
 	use 'tpope/vim-fugitive'
 	use 'mhinz/vim-signify'
 	use 'mhinz/vim-grepper'
-	use 'ajh17/VimCompletesMe'
 	use 'wincent/terminus'
 end)
