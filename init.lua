@@ -91,9 +91,16 @@ return require('packer').startup(function()
 			vim.api.nvim_set_var('startify_change_to_vcs_root', true)
 		end
 	}
-
+	use {
+		'hoob3rt/lualine.nvim',
+		config = function()
+			local lualine = require('lualine')
+			lualine.options.theme = 'dracula'
+			lualine.options.icons_enabled = false
+			lualine.status()
+		end
+	}
 	use 'justinmk/vim-dirvish'
-	use 'vim-airline/vim-airline'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-repeat'
 	use 'tpope/vim-unimpaired'
