@@ -71,7 +71,7 @@ return require('packer').startup(function()
 					exec = '<cr>'
 				},
 				rename_action_keys = {
-					quit = '<C-c>',
+					quit = '<esc>',
 					exec = '<cr>'
 				},
 				definition_preview_icon = '📖 '
