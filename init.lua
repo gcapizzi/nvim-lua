@@ -107,6 +107,29 @@ return require('packer').startup(function()
 			vim.api.nvim_set_option('completeopt', 'menu')
 		end
 	}
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate',
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				ensure_installed = "go",
+				highlight = {
+					enable = true
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						node_incremental = "=",
+						node_decremental = "-",
+						scope_incremental = "+",
+					},
+				},
+				indent = {
+					enable = true
+				}
+			}
+		end
+	}
 	use 'justinmk/vim-dirvish'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-repeat'
