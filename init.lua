@@ -10,6 +10,7 @@ vim.g.mapleader = ","
 vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>noh<cr>', { noremap = true})
 
 vim.api.nvim_command('autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()')
+vim.api.nvim_command('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()')
 vim.api.nvim_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
@@ -33,6 +34,7 @@ return require('packer').startup(function()
 		'neovim/nvim-lspconfig',
 		config = function()
 			require('lspconfig').gopls.setup{}
+			require('lspconfig').rust_analyzer.setup{}
 		end
 	}
 	use {
