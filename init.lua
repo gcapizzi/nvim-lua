@@ -35,52 +35,14 @@ return require('packer').startup(function()
 		config = function()
 			require('lspconfig').gopls.setup{}
 			require('lspconfig').rust_analyzer.setup{}
-		end
-	}
-	use {
-		'glepnir/lspsaga.nvim',
-		config = function()
-			vim.api.nvim_set_keymap('n', '<leader>gh', '<cmd>Lspsaga lsp_finder<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('v', '<leader>ca', '<cmd><c-u>Lspsaga range_code_action<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>Lspsaga rename<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>Lspsaga preview_definition<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>gn', '<cmd>Lspsaga diagnostic_jump_next<cr>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<leader>gp', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { noremap = true, silent = true })
 
-			require("lspsaga").init_lsp_saga {
-				error_sign = '❌',
-				warn_sign = '⚠️',
-				hint_sign = '💡',
-				infor_sign = 'ℹ️',
-				dianostic_header_icon = ' 🚒 ',
-				code_action_icon = '💡',
-				code_action_keys = {
-					quit = '<esc>',
-					exec = '<cr>'
-				},
-				finder_definition_icon = '📖 ',
-				finder_reference_icon = '🔖 ',
-				finder_action_keys = {
-					open = '<cr>',
-					split = 's',
-					vsplit = 'v',
-					quit = '<esc>',
-					scroll_down = '<c-f>',
-					scroll_up = '<c-b>'
-				},
-				code_action_keys = {
-					quit = '<esc>',
-					exec = '<cr>'
-				},
-				rename_action_keys = {
-					quit = '<esc>',
-					exec = '<cr>'
-				},
-				definition_preview_icon = '📖 '
-			}
+			vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', {noremap = true})
+			vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
 		end
 	}
 	use {
