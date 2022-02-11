@@ -61,10 +61,12 @@ return require('packer').startup(function()
 	use {
 		'hoob3rt/lualine.nvim',
 		config = function()
-			local lualine = require('lualine')
-			lualine.options.theme = 'dracula'
-			lualine.options.icons_enabled = false
-			lualine.status()
+			require('lualine').setup {
+				options = {
+					theme = 'dracula',
+					icons_enabled = false
+				}
+			}
 		end
 	}
 	use {
