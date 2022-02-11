@@ -5,6 +5,8 @@ vim.api.nvim_set_option('ignorecase', true)
 vim.api.nvim_set_option('smartcase', true)
 vim.api.nvim_set_option('undofile', true)
 
+vim.g.mapleader = ","
+
 vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>noh<cr>', { noremap = true})
 
 vim.api.nvim_command('autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()')
