@@ -13,13 +13,13 @@ vim.api.nvim_command('autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()
 vim.api.nvim_command('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()')
 vim.api.nvim_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+	packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
-vim.api.nvim_command('packadd packer.nvim')
+
 return require('packer').startup(function()
-	use {'wbthomason/packer.nvim', opt = true}
+	use 'wbthomason/packer.nvim'
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
@@ -114,4 +114,8 @@ return require('packer').startup(function()
 	use 'mhinz/vim-signify'
 	use 'mhinz/vim-grepper'
 	use 'wincent/terminus'
+
+	if packer_bootstrap then
+		require('packer').sync()
+	end
 end)
