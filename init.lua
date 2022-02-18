@@ -132,6 +132,7 @@ return require('packer').startup(function()
 			}
 		end
 	}
+	use 'wellle/targets.vim'
 	use 'justinmk/vim-dirvish'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-repeat'
