@@ -103,6 +103,35 @@ return require('packer').startup(function()
 			}
 		end
 	}
+	use {
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
+					},
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>sa"] = "@parameter.inner",
+						},
+						swap_previous = {
+							["<leader>sA"] = "@parameter.inner",
+						},
+					},
+				},
+
+			}
+		end
+	}
 	use 'justinmk/vim-dirvish'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-repeat'
