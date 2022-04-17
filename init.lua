@@ -7,7 +7,9 @@ vim.api.nvim_set_option('undofile', true)
 
 vim.g.mapleader = ","
 
-vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>noh<cr>', { noremap = true})
+vim.keymap.set('n', '<leader>l', function()
+	vim.api.nvim_set_option('hlsearch', false)
+end)
 
 vim.api.nvim_command('autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()')
 vim.api.nvim_command('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()')
@@ -24,10 +26,11 @@ return require('packer').startup(function()
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
 		config = function()
-			vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', { noremap = true })
+			local t = require('telescope.builtin')
+			vim.keymap.set('n', '<leader>ff', t.find_files)
+			vim.keymap.set('n', '<leader>fg', t.live_grep)
+			vim.keymap.set('n', '<leader>fb', t.buffers)
+			vim.keymap.set('n', '<leader>fs', t.lsp_dynamic_workspace_symbols)
 		end
 	}
 	use {
@@ -36,17 +39,17 @@ return require('packer').startup(function()
 			require('lspconfig').gopls.setup{}
 			require('lspconfig').rust_analyzer.setup{}
 
-			vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('v', '<leader>ca', ':<c-u>lua vim.lsp.buf.range_code_action()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+			vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
+			vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation)
+			vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references)
+			vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+			vim.keymap.set('v', '<leader>ca', vim.lsp.buf.range_code_action)
+			vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
-			vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.setloclist()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', {noremap = true})
-			vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {noremap = true})
+			vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist)
+			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 		end
 	}
 	use {
