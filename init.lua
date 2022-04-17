@@ -11,8 +11,10 @@ vim.keymap.set('n', '<leader>l', function()
 	vim.api.nvim_set_option('hlsearch', false)
 end)
 
-vim.api.nvim_command('autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()')
-vim.api.nvim_command('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()')
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = {'*.go', '*.rs'},
+	callback = vim.lsp.buf.formatting_sync,
+})
 vim.api.nvim_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
