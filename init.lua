@@ -62,7 +62,8 @@ return require('packer').startup(function()
 			vim.keymap.set('v', '<leader>ca', vim.lsp.buf.range_code_action)
 			vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
-			vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist)
+			vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
+			vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 		end
