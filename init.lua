@@ -26,7 +26,8 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+		branch = '0.1.x',
+		requires = {{'nvim-lua/plenary.nvim'}},
 		config = function()
 			local t = require('telescope.builtin')
 			vim.keymap.set('n', '<leader>ff', t.find_files)
