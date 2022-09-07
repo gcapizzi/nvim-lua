@@ -29,6 +29,18 @@ return require('packer').startup(function()
 		branch = '0.1.x',
 		requires = {{'nvim-lua/plenary.nvim'}},
 		config = function()
+			local a = require('telescope.actions')
+			require('telescope').setup {
+				defaults = {
+					mappings = {
+						i = {
+							["<C-j>"] = a.move_selection_next,
+							["<C-k>"] = a.move_selection_previous,
+						}
+					}
+				}
+			}
+
 			local t = require('telescope.builtin')
 			vim.keymap.set('n', '<leader>ff', t.find_files)
 			vim.keymap.set('n', '<leader>fg', t.live_grep)
