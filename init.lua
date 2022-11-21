@@ -11,7 +11,6 @@ vim.keymap.set('n', '<leader>l', function()
 	vim.o.hlsearch = false
 end)
 
-vim.o.formatexpr = 'v:lua.vim.lsp.formatexpr()'
 vim.cmd('autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()')
 
 vim.o.updatetime = 500
@@ -103,7 +102,6 @@ return require('packer').startup(function()
 	use {
 		'ajh17/VimCompletesMe',
 		config = function()
-			vim.o.omnifunc = 'v:lua.vim.lsp.omnifunc'
 			vim.o.completeopt = 'menu'
 		end
 	}
