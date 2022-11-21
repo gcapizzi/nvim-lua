@@ -1,21 +1,18 @@
-vim.api.nvim_set_option('number', true)
-vim.api.nvim_set_option('hidden', true)
-vim.api.nvim_set_option('cursorline', true)
-vim.api.nvim_set_option('ignorecase', true)
-vim.api.nvim_set_option('smartcase', true)
-vim.api.nvim_set_option('undofile', true)
+vim.o.number = true
+vim.o.hidden = true
+vim.o.cursorline = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.undofile = true
 
 vim.g.mapleader = ","
 
 vim.keymap.set('n', '<leader>l', function()
-	vim.api.nvim_set_option('hlsearch', false)
+	vim.o.hlsearch = false
 end)
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = {'*.go', '*.rs'},
-	callback = vim.lsp.buf.formatting_sync,
-})
-vim.api.nvim_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
+vim.o.formatexpr = 'v:lua.vim.lsp.formatexpr()'
+vim.cmd('autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()')
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -71,14 +68,14 @@ return require('packer').startup(function()
 	use {
 		'dracula/vim',
 		config = function()
-			vim.api.nvim_set_option('termguicolors', true)
-			vim.api.nvim_command('colorscheme dracula')
+			vim.o.termguicolors = true
+			vim.cmd('colorscheme dracula')
 		end
 	}
 	use {
 		'mhinz/vim-startify',
 		config = function()
-			vim.api.nvim_set_var('startify_change_to_vcs_root', true)
+			vim.g.startify_change_to_vcs_root = true
 		end
 	}
 	use {
@@ -95,8 +92,8 @@ return require('packer').startup(function()
 	use {
 		'ajh17/VimCompletesMe',
 		config = function()
-			vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-			vim.api.nvim_set_option('completeopt', 'menu')
+			vim.o.omnifunc = 'v:lua.vim.lsp.omnifunc'
+			vim.o.completeopt = 'menu'
 		end
 	}
 	use {
