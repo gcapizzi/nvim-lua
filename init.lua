@@ -69,7 +69,7 @@ return require('packer').startup(function()
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 
-			vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
+			vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
 			vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
 		end
 	}
