@@ -71,6 +71,9 @@ return require('packer').startup(function()
 
 			vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
 			vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
+			vim.cmd('autocmd CursorHold * lua vim.lsp.buf.document_highlight()')
+			vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()')
+			vim.cmd('autocmd CursorMoved * lua vim.lsp.buf.clear_references()')
 		end
 	}
 	use {
