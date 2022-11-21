@@ -165,7 +165,6 @@ return require('packer').startup(function()
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-fugitive'
 	use 'mhinz/vim-signify'
-	use 'mhinz/vim-grepper'
 	use 'wincent/terminus'
 
 	if packer_bootstrap then
