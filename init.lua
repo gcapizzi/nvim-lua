@@ -14,6 +14,9 @@ end)
 vim.o.formatexpr = 'v:lua.vim.lsp.formatexpr()'
 vim.cmd('autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()')
 
+vim.o.updatetime = 500
+vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
+
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	packer_bootstrap = vim.fn.system({
@@ -77,6 +80,7 @@ return require('packer').startup(function()
 		config = function()
 			vim.o.termguicolors = true
 			vim.cmd('colorscheme dracula')
+			vim.cmd('highlight LspSignatureActiveParameter gui=bold')
 		end
 	}
 	use {
