@@ -4,17 +4,13 @@ vim.o.cursorline = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.undofile = true
+vim.o.updatetime = 500
 
 vim.g.mapleader = ","
 
 vim.keymap.set('n', '<leader>l', function()
 	vim.o.hlsearch = false
 end)
-
-vim.cmd('autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting_sync()')
-
-vim.o.updatetime = 500
-vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
 
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -72,6 +68,9 @@ return require('packer').startup(function()
 			vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+
+			vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
+			vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
 		end
 	}
 	use {
