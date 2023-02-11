@@ -30,25 +30,7 @@ return require('lazy').setup({
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {'nvim-lua/plenary.nvim'},
-    config = function()
-      local a = require('telescope.actions')
-      require('telescope').setup {
-        defaults = {
-          mappings = {
-            i = {
-              ["<C-j>"] = a.move_selection_next,
-              ["<C-k>"] = a.move_selection_previous,
-            }
-          }
-        }
-      }
-
-      local t = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', t.find_files)
-      vim.keymap.set('n', '<leader>fg', t.live_grep)
-      vim.keymap.set('n', '<leader>fb', t.buffers)
-      vim.keymap.set('n', '<leader>fs', t.lsp_dynamic_workspace_symbols)
-    end
+    config = true,
   },
   {
     'neovim/nvim-lspconfig',
@@ -56,24 +38,52 @@ return require('lazy').setup({
       require('lspconfig').gopls.setup{}
       require('lspconfig').rust_analyzer.setup{}
 
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
-      vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation)
-      vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references)
-      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action)
-      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
-
-      vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
-      vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-
       vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
       vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
       vim.cmd('autocmd CursorHold * lua vim.lsp.buf.document_highlight()')
       vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()')
       vim.cmd('autocmd CursorMoved * lua vim.lsp.buf.clear_references()')
     end
+  },
+  {
+    'folke/which-key.nvim',
+    config = function()
+      local wk = require("which-key")
+      wk.setup {
+        ignore_missing = true
+      }
+      wk.register({
+        f = {
+          name = "Find",
+          f = { "<cmd>Telescope find_files<cr>", "File by name" },
+          r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+          g = { "<cmd>Telescope live_grep<cr>", "File via grep" },
+          b = { "<cmd>Telescope buffers<cr>", "Buffer" },
+          s = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Symbol" },
+        },
+        g = {
+          name = "Go to",
+          d = { vim.lsp.buf.definition, "Definition" },
+          i = { vim.lsp.buf.implementation, "Implementation" },
+          r = { vim.lsp.buf.references, "References" },
+        },
+        c = {
+          name = "Code",
+          r = { vim.lsp.buf.rename, "Rename" },
+          a = { vim.lsp.buf.code_action, "Action", mode = {"n", "v"}},
+        },
+        d = {
+          name = "Diagnostics",
+          d = { vim.diagnostic.open_float, "Show" },
+          l = { vim.diagnostic.setloclist, "List" },
+        },
+      }, { prefix = "<leader>" })
+      wk.register({
+        ['K'] = { vim.lsp.buf.hover, "Hover" },
+        [']d'] = { vim.diagnostic.goto_next, "Next diagnostic" },
+        ['[d'] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
+      })
+    end,
   },
   {
     'dracula/vim',
