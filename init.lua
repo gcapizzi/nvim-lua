@@ -12,19 +12,24 @@ vim.keymap.set('n', '<leader>l', function()
   vim.o.hlsearch = false
 end)
 
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({
-    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path,
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
   })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use {
+return require('lazy').setup({
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    requires = {{'nvim-lua/plenary.nvim'}},
+    dependencies = {'nvim-lua/plenary.nvim'},
     config = function()
       local a = require('telescope.actions')
       require('telescope').setup {
@@ -44,8 +49,8 @@ return require('packer').startup(function()
       vim.keymap.set('n', '<leader>fb', t.buffers)
       vim.keymap.set('n', '<leader>fs', t.lsp_dynamic_workspace_symbols)
     end
-  }
-  use {
+  },
+  {
     'neovim/nvim-lspconfig',
     config = function()
       require('lspconfig').gopls.setup{}
@@ -69,22 +74,22 @@ return require('packer').startup(function()
       vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()')
       vim.cmd('autocmd CursorMoved * lua vim.lsp.buf.clear_references()')
     end
-  }
-  use {
+  },
+  {
     'dracula/vim',
     config = function()
       vim.o.termguicolors = true
       vim.cmd('colorscheme dracula')
       vim.cmd('highlight LspSignatureActiveParameter gui=bold')
     end
-  }
-  use {
+  },
+  {
     'mhinz/vim-startify',
     config = function()
       vim.g.startify_change_to_vcs_root = true
     end
-  }
-  use {
+  },
+  {
     'hoob3rt/lualine.nvim',
     config = function()
       require('lualine').setup {
@@ -94,16 +99,16 @@ return require('packer').startup(function()
         }
       }
     end
-  }
-  use {
+  },
+  {
     'ajh17/VimCompletesMe',
     config = function()
       vim.o.completeopt = 'menu'
     end
-  }
-  use {
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {"go", "rust"},
@@ -123,8 +128,8 @@ return require('packer').startup(function()
         }
       }
     end
-  }
-  use {
+  },
+  {
     'nvim-treesitter/nvim-treesitter-textobjects',
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -152,20 +157,33 @@ return require('packer').startup(function()
 
       }
     end
-  }
-  use 'wellle/targets.vim'
-  use 'justinmk/vim-dirvish'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-unimpaired'
-  use 'tpope/vim-eunuch'
-  use 'tpope/vim-sleuth'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'mhinz/vim-signify'
-  use 'wincent/terminus'
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  },
+  'wellle/targets.vim',
+  'justinmk/vim-dirvish',
+  'tpope/vim-surround',
+  'tpope/vim-repeat',
+  'tpope/vim-unimpaired',
+  'tpope/vim-eunuch',
+  'tpope/vim-sleuth',
+  'tpope/vim-commentary',
+  'tpope/vim-fugitive',
+  'mhinz/vim-signify',
+  'wincent/terminus',
+}, {
+  ui = {
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
+})
