@@ -186,6 +186,7 @@ return require('lazy').setup({
     'j-hui/fidget.nvim',
     config = true,
   },
+  'lukas-reineke/indent-blankline.nvim',
   'wellle/targets.vim',
   'justinmk/vim-dirvish',
   'tpope/vim-surround',
