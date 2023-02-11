@@ -182,6 +182,10 @@ return require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     config = true,
   },
+  {
+    'j-hui/fidget.nvim',
+    config = true,
+  },
   'wellle/targets.vim',
   'justinmk/vim-dirvish',
   'tpope/vim-surround',
