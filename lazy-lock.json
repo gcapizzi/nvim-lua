@@ -1,5 +1,6 @@
 {
   "VimCompletesMe": { "branch": "master", "commit": "9adf692d7ae6424038458a89d4a411f0a27d1388" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f29f0b22fd66c910b892aae3bc18a4872c002738" },
   "lazy.nvim": { "branch": "main", "commit": "4917222c7e5c924bf7471b72a5e2d3e661530b40" },
   "lualine.nvim": { "branch": "master", "commit": "0050b308552e45f7128f399886c86afefc3eb988" },
   "nvim-lspconfig": { "branch": "master", "commit": "27e6eb27f31d1ef41427e1008029284c02dc856f" },
@@ -15,7 +16,6 @@
   "vim-eunuch": { "branch": "master", "commit": "291ef1f8c8996ca7715df1032a35a27b12d7b5cf" },
   "vim-fugitive": { "branch": "master", "commit": "62f42f013d866139fa23068ac2651b3f7e05a56f" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
-  "vim-signify": { "branch": "master", "commit": "a05e63ba72411977f5087c27c1564c9287bfab66" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-startify": { "branch": "master", "commit": "81e36c352a8deea54df5ec1e2f4348685569bed2" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },

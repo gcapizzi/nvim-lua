@@ -178,6 +178,10 @@ return require('lazy').setup({
       }
     end
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = true,
+  },
   'wellle/targets.vim',
   'justinmk/vim-dirvish',
   'tpope/vim-surround',
@@ -187,7 +191,6 @@ return require('lazy').setup({
   'tpope/vim-sleuth',
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
-  'mhinz/vim-signify',
   'wincent/terminus',
 }, {
   ui = {
