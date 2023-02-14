@@ -74,6 +74,11 @@ return require('lazy').setup({
           l = { vim.diagnostic.setloclist, "List" },
         },
         l = { "<cmd>set hlsearch!<cr>", "Toggle search highligting" },
+        b = {
+          name = "Buffer",
+          d = { "<cmd>BDelete this<cr>",  "Delete" },
+          o = { "<cmd>BDelete other<cr>",  "Delete others" },
+        },
       }, { prefix = "<leader>" })
       wk.register({
         ['K'] = { vim.lsp.buf.hover, "Hover" },
@@ -181,6 +186,10 @@ return require('lazy').setup({
   },
   {
     'j-hui/fidget.nvim',
+    config = true,
+  },
+  {
+    'kazhala/close-buffers.nvim',
     config = true,
   },
   'lukas-reineke/indent-blankline.nvim',
