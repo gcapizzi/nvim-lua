@@ -8,10 +8,6 @@ vim.o.updatetime = 500
 
 vim.g.mapleader = ","
 
-vim.keymap.set('n', '<leader>l', function()
-  vim.o.hlsearch = false
-end)
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -77,6 +73,7 @@ return require('lazy').setup({
           d = { vim.diagnostic.open_float, "Show" },
           l = { vim.diagnostic.setloclist, "List" },
         },
+        l = { "<cmd>set hlsearch!<cr>", "Toggle search highligting" },
       }, { prefix = "<leader>" })
       wk.register({
         ['K'] = { vim.lsp.buf.hover, "Hover" },
