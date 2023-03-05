@@ -81,6 +81,11 @@ return require('lazy').setup({
           D = { "<cmd>BDelete! this<cr>",  "Delete" },
           o = { "<cmd>BDelete other<cr>",  "Delete others" },
         },
+        t = {
+          name = "Test",
+          f = { "<cmd>TestFile<cr>", "File" },
+          l = { "<cmd>TestLast<cr>", "Last" },
+        },
       }, { prefix = "<leader>" })
       wk.register({
         ['K'] = { vim.lsp.buf.hover, "Hover" },
@@ -194,6 +199,7 @@ return require('lazy').setup({
     'kazhala/close-buffers.nvim',
     config = true,
   },
+  'vim-test/vim-test',
   'lukas-reineke/indent-blankline.nvim',
   'wellle/targets.vim',
   'justinmk/vim-dirvish',
