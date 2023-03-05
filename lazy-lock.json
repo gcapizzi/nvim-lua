@@ -8,6 +8,7 @@
   "lualine.nvim": { "branch": "master", "commit": "e99d733e0213ceb8f548ae6551b04ae32e590c80" },
   "nvim-lspconfig": { "branch": "master", "commit": "56f4c8cdcdffca8521d3415cba7894d2f9f11dfe" },
   "nvim-treesitter": { "branch": "master", "commit": "3731cf1c0c70287568d26f190849c68a46c21297" },
+  "nvim-treesitter-context": { "branch": "master", "commit": "895ec44f5c89bc67ba5440aef3d1f2efa3d59a41" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "4b30081d2736e09f90c890a8a7adfe4df36f5b36" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "targets.vim": { "branch": "master", "commit": "642d3a4ce306264b05ea3219920b13ea80931767" },

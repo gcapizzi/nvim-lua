@@ -187,6 +187,7 @@ return require('lazy').setup({
       }
     end
   },
+  'nvim-treesitter/nvim-treesitter-context',
   {
     'lewis6991/gitsigns.nvim',
     config = true,
