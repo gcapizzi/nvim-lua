@@ -76,7 +76,9 @@ return require('lazy').setup({
         l = { "<cmd>set hlsearch!<cr>", "Toggle search highligting" },
         b = {
           name = "Buffer",
+          n = { "<cmd>enew<cr>",  "New" },
           d = { "<cmd>BDelete this<cr>",  "Delete" },
+          D = { "<cmd>BDelete! this<cr>",  "Delete" },
           o = { "<cmd>BDelete other<cr>",  "Delete others" },
         },
       }, { prefix = "<leader>" })
