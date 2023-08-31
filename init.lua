@@ -130,7 +130,7 @@ return require('lazy').setup({
     end
   },
   {
-    'ajh17/VimCompletesMe',
+    'vim-scripts/VimCompletesMe',
     config = function()
       vim.o.completeopt = 'menu'
     end
@@ -194,7 +194,8 @@ return require('lazy').setup({
   },
   {
     'j-hui/fidget.nvim',
-    config = true,
+    tag = 'legacy',
+    event = "LspAttach",
   },
   {
     'kazhala/close-buffers.nvim',
