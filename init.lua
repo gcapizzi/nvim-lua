@@ -216,6 +216,7 @@ return require('lazy').setup({
   'tpope/vim-sleuth',
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
   'wincent/terminus',
 }, {
     ui = {
