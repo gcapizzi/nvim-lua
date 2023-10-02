@@ -53,7 +53,10 @@ return require('lazy').setup({
           name = "Find",
           f = { "<cmd>Telescope find_files<cr>", "File by name" },
           r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-          g = { "<cmd>Telescope live_grep<cr>", "File via grep" },
+          g = { "<cmd>Telescope live_grep<cr>", "File via live grep" },
+          w = { "<cmd>Telescope grep_string<cr>", "File via live grep (current word)" },
+          G = { "<cmd>Grepper -tool rg<cr>", "File via batch grep" },
+          W = { "<cmd>Grepper -tool rg -cword -noprompt<cr>", "File via batch grep (current word)" },
           b = { "<cmd>Telescope buffers<cr>", "Buffer" },
           s = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Symbol" },
         },
@@ -108,6 +111,7 @@ return require('lazy').setup({
       vim.g.startify_change_to_vcs_root = true
     end
   },
+  'mhinz/vim-grepper',
   {
     'hoob3rt/lualine.nvim',
     config = function()
