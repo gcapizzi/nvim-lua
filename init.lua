@@ -108,6 +108,11 @@ return require('lazy').setup({
           f = { "<cmd>TestFile<cr>", "File" },
           l = { "<cmd>TestLast<cr>", "Last" },
         },
+        s = {
+          name = "Swap",
+          a = { "Argument right" },
+          A = { "Argument left" },
+        },
       }, { prefix = "<leader>" })
       wk.register({
         ['K'] = { vim.lsp.buf.hover, "Hover" },
