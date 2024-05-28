@@ -5,6 +5,13 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.undofile = true
 vim.o.updatetime = 500
+vim.opt.listchars = {
+  eol = '¬',
+  space = '·',
+  extends = '«',
+  precedes = '»',
+  tab = '‣ ',
+}
 
 vim.g.mapleader = ","
 
