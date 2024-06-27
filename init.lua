@@ -43,7 +43,7 @@ return require('lazy').setup({
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup {
-        ensure_installed = {'gopls', 'rust_analyzer'},
+        ensure_installed = {'gopls', 'rust_analyzer', 'sorbet'},
       }
     end
   },
@@ -52,6 +52,7 @@ return require('lazy').setup({
     config = function()
       require('lspconfig').gopls.setup{}
       require('lspconfig').rust_analyzer.setup{}
+      require('lspconfig').sorbet.setup{}
 
       vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
       vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
