@@ -223,9 +223,9 @@ return require('lazy').setup({
     config = true,
   },
   {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    event = "LspAttach",
+    "j-hui/fidget.nvim",
+    tag = "v1.4.5",
+    config = true,
   },
   {
     'kazhala/close-buffers.nvim',
