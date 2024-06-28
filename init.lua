@@ -97,6 +97,7 @@ return require('lazy').setup({
           l = { vim.diagnostic.setloclist, "List" },
         },
         l = { "<cmd>set hlsearch!<cr>", "Toggle search highligting" },
+        y = { "<cmd>Telescope yank_history<cr>", "Yank history" },
         b = {
           name = "Buffer",
           n = { "<cmd>enew<cr>",  "New" },
@@ -229,6 +230,21 @@ return require('lazy').setup({
   {
     'kazhala/close-buffers.nvim',
     config = true,
+  },
+  {
+    "gbprod/yanky.nvim",
+    config = function()
+      require("yanky").setup({})
+      require("telescope").load_extension("yank_history")
+
+      vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+
+      vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+      vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+    end
   },
   'vim-test/vim-test',
   'lukas-reineke/indent-blankline.nvim',
