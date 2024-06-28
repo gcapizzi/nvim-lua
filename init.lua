@@ -247,7 +247,6 @@ return require('lazy').setup({
     end
   },
   'vim-test/vim-test',
-  'lukas-reineke/indent-blankline.nvim',
   'wellle/targets.vim',
   'justinmk/vim-dirvish',
   'tpope/vim-surround',
