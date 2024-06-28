@@ -117,7 +117,6 @@ return require('lazy').setup({
         },
       }, { prefix = "<leader>" })
       wk.register({
-        ['K'] = { vim.lsp.buf.hover, "Hover" },
         [']d'] = { vim.diagnostic.goto_next, "Next diagnostic" },
         ['[d'] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
       })
