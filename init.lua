@@ -54,11 +54,23 @@ return require('lazy').setup({
       require('lspconfig').rust_analyzer.setup{}
       require('lspconfig').sorbet.setup{}
 
-      vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
-      vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.signature_help()')
-      vim.cmd('autocmd CursorHold * lua vim.lsp.buf.document_highlight()')
-      vim.cmd('autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()')
-      vim.cmd('autocmd CursorMoved * lua vim.lsp.buf.clear_references()')
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client.supports_method('textDocument/formatting') then
+            vim.api.nvim_create_autocmd('BufWritePre', { callback = function() vim.lsp.buf.format() end })
+          end
+          if client.supports_method('textDocument/signatureHelp') then
+            vim.api.nvim_create_autocmd('CursorHoldI', { callback = function() vim.lsp.buf.signature_help() end })
+            vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { bold = true })
+          end
+          if client.supports_method('textDocument/documentHighlight') then
+            vim.api.nvim_create_autocmd('CursorHold', { callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd('CursorHoldI', { callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd('CursorMoved', { callback = function() vim.lsp.buf.clear_references() end })
+          end
+        end,
+      })
     end
   },
   {
@@ -127,7 +139,6 @@ return require('lazy').setup({
     config = function()
       vim.o.termguicolors = true
       vim.cmd('colorscheme dracula')
-      vim.cmd('highlight LspSignatureActiveParameter gui=bold')
     end
   },
   {
