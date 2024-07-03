@@ -43,7 +43,7 @@ return require('lazy').setup({
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup {
-        automatic_installation = true,
+        ensure_installed = {'gopls', 'rust_analyzer', 'ruby_lsp', 'sorbet'},
       }
     end
   },
