@@ -52,6 +52,7 @@ return require('lazy').setup({
     config = function()
       require('lspconfig').gopls.setup{}
       require('lspconfig').rust_analyzer.setup{}
+      require('lspconfig').ruby_lsp.setup{}
       require('lspconfig').sorbet.setup{}
 
       vim.api.nvim_create_autocmd('LspAttach', {
