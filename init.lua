@@ -43,7 +43,7 @@ return require('lazy').setup({
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup {
-        ensure_installed = {'gopls', 'rust_analyzer', 'sorbet'},
+        automatic_installation = true,
       }
     end
   },
@@ -180,7 +180,7 @@ return require('lazy').setup({
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = {"vim", "lua", "go", "rust"},
+        ensure_installed = {"vim", "lua", "go", "rust", "ruby", "bash"},
         highlight = {
           enable = true
         },
