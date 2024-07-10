@@ -61,10 +61,6 @@ return require('lazy').setup({
           if client.supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', { callback = function() vim.lsp.buf.format() end })
           end
-          if client.supports_method('textDocument/signatureHelp') then
-            vim.api.nvim_create_autocmd('CursorHoldI', { callback = function() vim.lsp.buf.signature_help() end })
-            vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { bold = true })
-          end
           if client.supports_method('textDocument/documentHighlight') then
             vim.api.nvim_create_autocmd('CursorHold', { callback = function() vim.lsp.buf.document_highlight() end })
             vim.api.nvim_create_autocmd('CursorHoldI', { callback = function() vim.lsp.buf.document_highlight() end })
