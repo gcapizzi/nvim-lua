@@ -266,9 +266,15 @@ return require('lazy').setup({
       vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
     end
   },
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      require("oil").setup()
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    end
+  },
   'vim-test/vim-test',
   'wellle/targets.vim',
-  'justinmk/vim-dirvish',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-unimpaired',
