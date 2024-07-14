@@ -72,64 +72,50 @@ return require('lazy').setup({
   },
   {
     'folke/which-key.nvim',
-    config = function()
-      local wk = require("which-key")
-      wk.setup {
-        ignore_missing = true
-      }
-      wk.register({
-        f = {
-          name = "Find",
-          f = { "<cmd>Telescope find_files<cr>", "File by name" },
-          r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-          g = { "<cmd>Telescope live_grep<cr>", "File via live grep" },
-          w = { "<cmd>Telescope grep_string<cr>", "File via live grep (current word)" },
-          G = { "<cmd>Grepper -tool rg<cr>", "File via batch grep" },
-          W = { "<cmd>Grepper -tool rg -cword -noprompt<cr>", "File via batch grep (current word)" },
-          b = { "<cmd>Telescope buffers<cr>", "Buffer" },
-          s = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Symbol" },
-        },
-        g = {
-          name = "Go to",
-          d = { vim.lsp.buf.definition, "Definition" },
-          i = { vim.lsp.buf.implementation, "Implementation" },
-          r = { vim.lsp.buf.references, "References" },
-        },
-        c = {
-          name = "Code",
-          r = { vim.lsp.buf.rename, "Rename" },
-          a = { vim.lsp.buf.code_action, "Action", mode = {"n", "v"}},
-        },
-        d = {
-          name = "Diagnostics",
-          d = { vim.diagnostic.open_float, "Show" },
-          l = { vim.diagnostic.setloclist, "List" },
-        },
-        l = { "<cmd>set hlsearch!<cr>", "Toggle search highligting" },
-        y = { "<cmd>Telescope yank_history<cr>", "Yank history" },
-        b = {
-          name = "Buffer",
-          n = { "<cmd>enew<cr>",  "New" },
-          d = { "<cmd>BDelete this<cr>",  "Delete" },
-          D = { "<cmd>BDelete! this<cr>",  "Delete" },
-          o = { "<cmd>BDelete other<cr>",  "Delete others" },
-        },
-        t = {
-          name = "Test",
-          f = { "<cmd>TestFile<cr>", "File" },
-          l = { "<cmd>TestLast<cr>", "Last" },
-        },
-        s = {
-          name = "Swap",
-          a = { "Argument right" },
-          A = { "Argument left" },
-        },
-      }, { prefix = "<leader>" })
-      wk.register({
-        [']d'] = { vim.diagnostic.goto_next, "Next diagnostic" },
-        ['[d'] = { vim.diagnostic.goto_prev, "Previous diagnostic" },
-      })
-    end,
+    event = "VeryLazy",
+    config = true,
+    opts = {
+      icons = {
+        rules = false,
+        separator = '>',
+      },
+    },
+    keys = {
+      { "<leader>f", group = "Find" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File by name" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "File via live grep" },
+      { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "File via live grep (current word)" },
+      { "<leader>fG", "<cmd>Grepper -tool rg<cr>", desc = "File via batch grep" },
+      { "<leader>fW", "<cmd>Grepper -tool rg -cword -noprompt<cr>", desc = "File via batch grep (current word)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffer" },
+      { "<leader>fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Symbol" },
+      { "<leader>g", group = "Go to" },
+      { "<leader>gd", vim.lsp.buf.definition, desc = "Definition" },
+      { "<leader>gi", vim.lsp.buf.implementation, desc = "Implementation" },
+      { "<leader>gr", vim.lsp.buf.references, desc = "References" },
+      { "<leader>c", group = "Code" },
+      { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = "Action", mode = { "n", "v" } },
+      { "<leader>d", group = "Diagnostics" },
+      { "<leader>dd", vim.diagnostic.open_float, desc = "Show" },
+      { "<leader>dl", vim.diagnostic.setloclist, desc = "List" },
+      { "<leader>l", "<cmd>set hlsearch!<cr>", desc = "Toggle search highligting" },
+      { "<leader>y", "<cmd>Telescope yank_history<cr>", desc = "Yank history" },
+      { "<leader>b", group = "Buffer" },
+      { "<leader>bn", "<cmd>enew<cr>", desc = "New" },
+      { "<leader>bd", "<cmd>BDelete this<cr>", desc = "Delete" },
+      { "<leader>bD", "<cmd>BDelete! this<cr>", desc = "Delete" },
+      { "<leader>bo", "<cmd>BDelete other<cr>", desc = "Delete others" },
+      { "<leader>t", group = "Test" },
+      { "<leader>tf", "<cmd>TestFile<cr>", desc = "File" },
+      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Last" },
+      { "<leader>s", group = "Swap" },
+      { "<leader>sa", desc = "Argument right" },
+      { "<leader>sA", desc = "Argument left" },
+      { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
+      { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
+    }
   },
   {
     'dracula/vim',
