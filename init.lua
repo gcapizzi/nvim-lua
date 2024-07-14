@@ -118,10 +118,12 @@ return require('lazy').setup({
     }
   },
   {
-    'dracula/vim',
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
     config = function()
-      vim.o.termguicolors = true
-      vim.cmd('colorscheme dracula')
+      vim.cmd('colorscheme tokyonight-night')
     end
   },
   {
@@ -136,7 +138,7 @@ return require('lazy').setup({
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'dracula',
+          theme = 'tokyonight-night',
           icons_enabled = false,
           section_separators = '',
           component_separators = ''
