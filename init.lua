@@ -137,7 +137,6 @@ return require("lazy").setup({
       require("project_nvim").setup {}
     end
   },
-  "mhinz/vim-grepper",
   {
     "hoob3rt/lualine.nvim",
     config = function()
@@ -239,7 +238,6 @@ return require("lazy").setup({
       }
     end
   },
-  "nvim-treesitter/nvim-treesitter-context",
   {
     "lewis6991/gitsigns.nvim",
     config = true,
@@ -290,6 +288,8 @@ return require("lazy").setup({
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end
   },
+  "nvim-treesitter/nvim-treesitter-context",
+  "mhinz/vim-grepper",
   "vim-test/vim-test",
   "wellle/targets.vim",
   "tpope/vim-surround",
