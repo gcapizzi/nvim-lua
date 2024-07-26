@@ -6,11 +6,11 @@ vim.o.smartcase = true
 vim.o.undofile = true
 vim.o.updatetime = 500
 vim.opt.listchars = {
-  eol = '¬',
-  space = '·',
-  extends = '«',
-  precedes = '»',
-  tab = '‣ ',
+  eol = "¬",
+  space = "·",
+  extends = "«",
+  precedes = "»",
+  tab = "‣ ",
 }
 
 vim.g.mapleader = ","
@@ -28,56 +28,56 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-return require('lazy').setup({
+return require("lazy").setup({
   {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {'nvim-lua/plenary.nvim'},
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {"nvim-lua/plenary.nvim"},
     config = true,
   },
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     config = true,
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    "williamboman/mason-lspconfig.nvim",
     config = function()
-      require('mason-lspconfig').setup {
-        ensure_installed = {'gopls', 'rust_analyzer', 'ruby_lsp', 'sorbet'},
+      require("mason-lspconfig").setup {
+        ensure_installed = {"gopls", "rust_analyzer", "ruby_lsp", "sorbet"},
       }
     end
   },
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     config = function()
-      require('lspconfig').gopls.setup{}
-      require('lspconfig').rust_analyzer.setup{}
-      require('lspconfig').ruby_lsp.setup{}
-      require('lspconfig').sorbet.setup{}
+      require("lspconfig").gopls.setup{}
+      require("lspconfig").rust_analyzer.setup{}
+      require("lspconfig").ruby_lsp.setup{}
+      require("lspconfig").sorbet.setup{}
 
-      vim.api.nvim_create_autocmd('LspAttach', {
+      vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client.supports_method('textDocument/formatting') then
-            vim.api.nvim_create_autocmd('BufWritePre', { callback = function() vim.lsp.buf.format() end })
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
           end
-          if client.supports_method('textDocument/documentHighlight') then
-            vim.api.nvim_create_autocmd('CursorHold', { callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd('CursorHoldI', { callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd('CursorMoved', { callback = function() vim.lsp.buf.clear_references() end })
+          if client.supports_method("textDocument/documentHighlight") then
+            vim.api.nvim_create_autocmd("CursorHold", { callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorHoldI", { callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorMoved", { callback = function() vim.lsp.buf.clear_references() end })
           end
         end,
       })
     end
   },
   {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
     event = "VeryLazy",
     config = true,
     opts = {
       icons = {
         rules = false,
-        separator = '>',
+        separator = ">",
       },
     },
     keys = {
@@ -123,15 +123,15 @@ return require('lazy').setup({
     priority = 1000,
     opts = {},
     config = function()
-      vim.cmd('colorscheme tokyonight-night')
+      vim.cmd("colorscheme tokyonight-night")
     end
   },
   {
     "goolord/alpha-nvim",
     config = function ()
-      local startify = require('alpha.themes.startify')
+      local startify = require("alpha.themes.startify")
       startify.nvim_web_devicons.enabled = false
-      require('alpha').setup(startify.config)
+      require("alpha").setup(startify.config)
     end
   },
   {
@@ -140,39 +140,39 @@ return require('lazy').setup({
       require("project_nvim").setup {}
     end
   },
-  'mhinz/vim-grepper',
+  "mhinz/vim-grepper",
   {
-    'hoob3rt/lualine.nvim',
+    "hoob3rt/lualine.nvim",
     config = function()
-      require('lualine').setup {
+      require("lualine").setup {
         options = {
-          theme = 'tokyonight-night',
+          theme = "tokyonight-night",
           icons_enabled = false,
-          section_separators = '',
-          component_separators = ''
+          section_separators = "",
+          component_separators = ""
         },
         tabline = {
-          lualine_a = {'buffers'},
+          lualine_a = {"buffers"},
           lualine_b = {},
           lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {'tabs'}
+          lualine_z = {"tabs"}
         }
       }
     end
   },
   {
-    'vim-scripts/VimCompletesMe',
+    "vim-scripts/VimCompletesMe",
     config = function()
-      vim.o.completeopt = 'menu'
+      vim.o.completeopt = "menu"
     end
   },
   {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup {
+      require("nvim-treesitter.configs").setup {
         ensure_installed = {"vim", "lua", "go", "rust", "ruby", "bash"},
         highlight = {
           enable = true
@@ -192,9 +192,9 @@ return require('lazy').setup({
     end
   },
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
     config = function()
-      require('nvim-treesitter.configs').setup {
+      require("nvim-treesitter.configs").setup {
         textobjects = {
           select = {
             enable = true,
@@ -220,9 +220,9 @@ return require('lazy').setup({
       }
     end
   },
-  'nvim-treesitter/nvim-treesitter-context',
+  "nvim-treesitter/nvim-treesitter-context",
   {
-    'lewis6991/gitsigns.nvim',
+    "lewis6991/gitsigns.nvim",
     config = true,
   },
   {
@@ -231,7 +231,7 @@ return require('lazy').setup({
     config = true,
   },
   {
-    'kazhala/close-buffers.nvim',
+    "kazhala/close-buffers.nvim",
     config = true,
   },
   {
@@ -256,14 +256,14 @@ return require('lazy').setup({
         on_substitute = require("yanky.integration").substitute(),
       })
 
-      vim.keymap.set("n", "s", require('substitute').operator, { noremap = true })
-      vim.keymap.set("n", "ss", require('substitute').line, { noremap = true })
-      vim.keymap.set("n", "S", require('substitute').eol, { noremap = true })
-      vim.keymap.set("x", "s", require('substitute').visual, { noremap = true })
+      vim.keymap.set("n", "s", require("substitute").operator, { noremap = true })
+      vim.keymap.set("n", "ss", require("substitute").line, { noremap = true })
+      vim.keymap.set("n", "S", require("substitute").eol, { noremap = true })
+      vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
     end
   },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     config = function()
       require("oil").setup({
         delete_to_trash = true
@@ -271,17 +271,17 @@ return require('lazy').setup({
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end
   },
-  'vim-test/vim-test',
-  'wellle/targets.vim',
-  'tpope/vim-surround',
-  'tpope/vim-repeat',
-  'tpope/vim-unimpaired',
-  'tpope/vim-eunuch',
-  'tpope/vim-sleuth',
-  'tpope/vim-commentary',
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'wincent/terminus',
+  "vim-test/vim-test",
+  "wellle/targets.vim",
+  "tpope/vim-surround",
+  "tpope/vim-repeat",
+  "tpope/vim-unimpaired",
+  "tpope/vim-eunuch",
+  "tpope/vim-sleuth",
+  "tpope/vim-commentary",
+  "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+  "wincent/terminus",
 }, {
     ui = {
       icons = {
