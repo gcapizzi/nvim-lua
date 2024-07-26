@@ -127,9 +127,17 @@ return require('lazy').setup({
     end
   },
   {
-    'mhinz/vim-startify',
+    "goolord/alpha-nvim",
+    config = function ()
+      local startify = require('alpha.themes.startify')
+      startify.nvim_web_devicons.enabled = false
+      require('alpha').setup(startify.config)
+    end
+  },
+  {
+    "ahmedkhalf/project.nvim",
     config = function()
-      vim.g.startify_change_to_vcs_root = true
+      require("project_nvim").setup {}
     end
   },
   'mhinz/vim-grepper',
