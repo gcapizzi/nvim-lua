@@ -41,11 +41,9 @@ return require("lazy").setup({
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup {
-        ensure_installed = {"gopls", "rust_analyzer", "ruby_lsp", "sorbet"},
-      }
-    end
+    opts = {
+      ensure_installed = {"gopls", "rust_analyzer", "ruby_lsp", "sorbet"},
+    }
   },
   {
     "neovim/nvim-lspconfig",
@@ -73,7 +71,6 @@ return require("lazy").setup({
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = true,
     opts = {
       icons = {
         rules = false,
