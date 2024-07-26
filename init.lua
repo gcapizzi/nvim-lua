@@ -288,6 +288,10 @@ return require("lazy").setup({
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end
   },
+  {
+    'numToStr/Comment.nvim',
+    config = true,
+  },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
   "vim-test/vim-test",
@@ -297,7 +301,6 @@ return require("lazy").setup({
   "tpope/vim-unimpaired",
   "tpope/vim-eunuch",
   "tpope/vim-sleuth",
-  "tpope/vim-commentary",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "wincent/terminus",
