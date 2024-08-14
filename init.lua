@@ -112,6 +112,10 @@ return require("lazy").setup({
         { "<leader>s", group = "Swap" },
         { "<leader>sa", desc = "Argument right" },
         { "<leader>sA", desc = "Argument left" },
+        { "<leader>q", group = "Session" },
+        { "<leader>qs", function() require("persistence").load() end, desc = "Load" },
+        { "<leader>qS", function() require("persistence").select() end, desc = "Select" },
+        { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Load last" },
         { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
         { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
       }
@@ -300,6 +304,11 @@ return require("lazy").setup({
     config = function()
       vim.g["test#strategy"] = "neovim"
     end
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    config = true,
   },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
