@@ -108,6 +108,7 @@ return require("lazy").setup({
         { "<leader>t", group = "Test" },
         { "<leader>tf", "<cmd>TestFile<cr>", desc = "File" },
         { "<leader>tl", "<cmd>TestLast<cr>", desc = "Last" },
+        { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Nearest" },
         { "<leader>s", group = "Swap" },
         { "<leader>sa", desc = "Argument right" },
         { "<leader>sA", desc = "Argument left" },
@@ -294,9 +295,14 @@ return require("lazy").setup({
     'numToStr/Comment.nvim',
     config = true,
   },
+  {
+    "vim-test/vim-test",
+    config = function()
+      vim.g["test#strategy"] = "neovim"
+    end
+  },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
-  "vim-test/vim-test",
   "wellle/targets.vim",
   "tpope/vim-surround",
   "tpope/vim-repeat",
