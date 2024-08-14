@@ -42,7 +42,7 @@ return require("lazy").setup({
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = {"gopls", "rust_analyzer", "ruby_lsp", "sorbet"},
+      ensure_installed = {"gopls", "rust_analyzer", "sorbet"},
     }
   },
   {
@@ -50,7 +50,6 @@ return require("lazy").setup({
     config = function()
       require("lspconfig").gopls.setup{}
       require("lspconfig").rust_analyzer.setup{}
-      require("lspconfig").ruby_lsp.setup{}
       require("lspconfig").sorbet.setup{
         cmd = { ".vscode/run-sorbet", "--lsp" }
       }
