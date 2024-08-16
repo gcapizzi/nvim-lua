@@ -124,12 +124,12 @@ return require("lazy").setup({
     },
   },
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
     lazy = false,
     priority = 1000,
     opts = {},
     config = function()
-      vim.cmd("colorscheme tokyonight-night")
+      vim.cmd("colorscheme catppuccin-macchiato")
     end
   },
   {
@@ -151,7 +151,7 @@ return require("lazy").setup({
     config = function()
       require("lualine").setup {
         options = {
-          theme = "tokyonight-night",
+          theme = "catppuccin-macchiato",
           icons_enabled = false,
           section_separators = "",
           component_separators = ""
