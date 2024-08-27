@@ -65,7 +65,7 @@ return require("lazy").setup({
       require("lspconfig").gopls.setup{}
       require("lspconfig").rust_analyzer.setup{}
       require("lspconfig").sorbet.setup{
-        cmd = { ".vscode/run-sorbet", "--lsp" }
+        cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
       }
 
       vim.api.nvim_create_autocmd("LspAttach", {
