@@ -118,11 +118,11 @@ return require("lazy").setup({
         { "<leader>y", "<cmd>Telescope yank_history<cr>", desc = "Yank history" },
         { "<leader>b", group = "Buffer" },
         { "<leader>bn", "<cmd>enew<cr>", desc = "New" },
-        { "<leader>bd", "<cmd>BDelete this<cr>", desc = "Delete" },
-        { "<leader>bD", "<cmd>BDelete! this<cr>", desc = "Force delete" },
-        { "<leader>bx", "<cmd>bdelete<cr>", desc = "Delete and close window" },
-        { "<leader>bX", "<cmd>bdelete!<cr>", desc = "Force delete and close window" },
-        { "<leader>bo", "<cmd>BDelete other<cr>", desc = "Delete others" },
+        { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete" },
+        { "<leader>bD", "<cmd>bdelete!<cr>", desc = "Force delete" },
+        { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete others" },
+        { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete on the left" },
+        { "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete on the right" },
         { "<leader>t", group = "Test" },
         { "<leader>tf", "<cmd>TestFile<cr>", desc = "File" },
         { "<leader>tl", "<cmd>TestLast<cr>", desc = "Last" },
@@ -134,6 +134,12 @@ return require("lazy").setup({
         { "<leader>qs", function() require("persistence").load() end, desc = "Load" },
         { "<leader>qS", function() require("persistence").select() end, desc = "Select" },
         { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Load last" },
+        { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+        { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
+        { "]B", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "First buffer" },
+        { "[B", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Last buffer" },
+        { "]v", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
+        { "[v", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
         { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
         { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
       }
@@ -171,10 +177,6 @@ return require("lazy").setup({
           icons_enabled = false,
           section_separators = "",
           component_separators = ""
-        },
-        tabline = {
-          lualine_a = {"buffers"},
-          lualine_z = {"tabs"}
         }
       }
     end
@@ -269,10 +271,6 @@ return require("lazy").setup({
     config = true,
   },
   {
-    "kazhala/close-buffers.nvim",
-    config = true,
-  },
-  {
     "gbprod/yanky.nvim",
     config = function()
       require("yanky").setup({})
@@ -323,6 +321,16 @@ return require("lazy").setup({
     "folke/persistence.nvim",
     event = "BufReadPre",
     config = true,
+  },
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    opts = {
+      options = {
+        show_buffer_icons = false,
+        show_buffer_close_icons = false,
+      }
+    },
   },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
