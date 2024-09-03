@@ -123,6 +123,7 @@ return require("lazy").setup({
         { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete others" },
         { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete on the left" },
         { "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete on the right" },
+        { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin" },
         { "<leader>t", group = "Test" },
         { "<leader>tf", "<cmd>TestFile<cr>", desc = "File" },
         { "<leader>tl", "<cmd>TestLast<cr>", desc = "Last" },
@@ -325,12 +326,19 @@ return require("lazy").setup({
   {
     'akinsho/bufferline.nvim',
     version = "*",
-    opts = {
-      options = {
-        show_buffer_icons = false,
-        show_buffer_close_icons = false,
-      }
-    },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          show_buffer_icons = false,
+          show_buffer_close_icons = false,
+          groups = {
+            items = {
+              require('bufferline.groups').builtin.pinned:with({ icon = "" })
+            }
+          }
+        }
+      })
+    end
   },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
