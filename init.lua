@@ -343,21 +343,4 @@ return require("lazy").setup({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "wincent/terminus",
-}, {
-    ui = {
-      icons = {
-        cmd = "⌘",
-        config = "🛠",
-        event = "📅",
-        ft = "📂",
-        init = "⚙",
-        keys = "🗝",
-        plugin = "🔌",
-        runtime = "💻",
-        source = "📄",
-        start = "🚀",
-        task = "📌",
-        lazy = "💤 ",
-      },
-    },
-  })
+})
