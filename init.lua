@@ -343,4 +343,5 @@ return require("lazy").setup({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "wincent/terminus",
+  "ntpeters/vim-better-whitespace",
 })
