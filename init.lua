@@ -72,12 +72,12 @@ return require("lazy").setup({
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
+            vim.api.nvim_create_autocmd("BufWritePre", { buffer = args["buf"], callback = function() vim.lsp.buf.format() end })
           end
           if client.supports_method("textDocument/documentHighlight") then
-            vim.api.nvim_create_autocmd("CursorHold", { callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd("CursorHoldI", { callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd("CursorMoved", { callback = function() vim.lsp.buf.clear_references() end })
+            vim.api.nvim_create_autocmd("CursorHold", { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorHoldI", { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorMoved", { buffer = args["buf"], callback = function() vim.lsp.buf.clear_references() end })
           end
         end,
       })
