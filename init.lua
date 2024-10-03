@@ -101,6 +101,7 @@ return require("lazy").setup({
         { "<leader>fW", "<cmd>Grepper -tool rg -cword -noprompt<cr>", desc = "File via batch grep (current word)" },
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffer" },
         { "<leader>fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Symbol" },
+        { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last search" },
         { "<leader>g", group = "Go to" },
         { "<leader>gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definition" },
         { "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Implementation" },
