@@ -328,7 +328,10 @@ return require("lazy").setup({
             items = {
               require('bufferline.groups').builtin.pinned:with({ icon = "" })
             }
-          }
+          },
+          custom_filter = function(buf, buf_nums)
+            return vim.bo[buf].filetype ~= "qf"
+          end
         }
       })
     end
