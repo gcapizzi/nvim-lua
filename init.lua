@@ -347,7 +347,7 @@ return require("lazy").setup({
     version = "*",
     opts = {
       size = 20,
-      persist_size = true,
+      persist_size = false,
     },
   },
   "nvim-treesitter/nvim-treesitter-context",
