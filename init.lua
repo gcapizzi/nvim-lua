@@ -139,6 +139,7 @@ return require("lazy").setup({
         { "<leader>k", group = "Quickfix" },
         { "<leader>ko", "<cmd>copen<cr>", desc = "Open" },
         { "<leader>kc", "<cmd>cclose<cr>", desc = "Close" },
+        { "<leader>r", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
         { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
         { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
         { "]B", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "First buffer" },
@@ -313,7 +314,7 @@ return require("lazy").setup({
   {
     "vim-test/vim-test",
     config = function()
-      vim.g["test#strategy"] = "neovim"
+      vim.g["test#strategy"] = "toggleterm"
     end
   },
   {
@@ -340,6 +341,14 @@ return require("lazy").setup({
         }
       })
     end
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      size = 20,
+      persist_size = true,
+    },
   },
   "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
