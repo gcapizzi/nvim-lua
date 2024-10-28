@@ -105,7 +105,7 @@ return require("lazy").setup({
         { "<leader>g", group = "Go to" },
         { "<leader>gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definition" },
         { "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Implementation" },
-        { "<leader>gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+        { "<leader>gr", "<cmd>Telescope lsp_references show_line=false<cr>", desc = "References" },
         { "<leader>gD", vim.lsp.buf.definition, desc = "Definition (quickfix) " },
         { "<leader>gI", vim.lsp.buf.implementation, desc = "Implementation (quickfix)" },
         { "<leader>gR", vim.lsp.buf.references, desc = "References (quickfix)" },
