@@ -363,6 +363,7 @@ return require("lazy").setup({
   "tpope/vim-sleuth",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
+  "tpope/vim-projectionist",
   "wincent/terminus",
   "ntpeters/vim-better-whitespace",
 })
