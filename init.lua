@@ -311,10 +311,6 @@ return require("lazy").setup({
     end
   },
   {
-    'numToStr/Comment.nvim',
-    config = true,
-  },
-  {
     "vim-test/vim-test",
     config = function()
       vim.g["test#strategy"] = "toggleterm"
