@@ -362,4 +362,5 @@ return require("lazy").setup({
   "tpope/vim-projectionist",
   "wincent/terminus",
   "ntpeters/vim-better-whitespace",
+  "github/copilot.vim",
 })
