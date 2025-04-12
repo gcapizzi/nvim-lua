@@ -217,37 +217,6 @@ return require("lazy").setup({
     end
   },
   {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    config = function()
-      require("nvim-treesitter.configs").setup {
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["ab"] = "@block.outer",
-              ["ib"] = "@block.inner",
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>sa"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>sA"] = "@parameter.inner",
-            },
-          },
-        },
-
-      }
-    end
-  },
-  {
     "lewis6991/gitsigns.nvim",
     config = true,
   },
@@ -332,7 +301,6 @@ return require("lazy").setup({
       persist_size = false,
     },
   },
-  "nvim-treesitter/nvim-treesitter-context",
   "mhinz/vim-grepper",
   "wellle/targets.vim",
   "tpope/vim-surround",
