@@ -65,10 +65,14 @@ return require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
     config = function()
-      require("lspconfig").gopls.setup{}
-      require("lspconfig").rust_analyzer.setup{}
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      require("lspconfig").gopls.setup{ capabilities = capabilities }
+      require("lspconfig").rust_analyzer.setup{ capabilities = capabilities }
       require("lspconfig").sorbet.setup{
+        capabilities = capabilities,
         cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
       }
 
@@ -193,32 +197,9 @@ return require("lazy").setup({
     end
   },
   {
-    "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-    },
-    config = function()
-      local cmp = require("cmp")
-      cmp.setup({
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "path" },
-        }, {
-          { name = "buffer" },
-        })
-      })
-    end
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {},
   },
   {
     "nvim-treesitter/nvim-treesitter",
