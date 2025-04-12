@@ -15,6 +15,10 @@ vim.opt.listchars = {
 
 vim.g.mapleader = ","
 
+vim.diagnostic.config({
+  virtual_lines = true
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
