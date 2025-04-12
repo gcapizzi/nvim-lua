@@ -146,8 +146,6 @@ return require("lazy").setup({
         { "[B", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Last buffer" },
         { "]v", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
         { "[v", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
-        { "]d", vim.diagnostic.goto_next, desc = "Next diagnostic" },
-        { "[d", vim.diagnostic.goto_prev, desc = "Previous diagnostic" },
       }
     },
   },
