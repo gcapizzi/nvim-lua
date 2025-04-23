@@ -127,8 +127,8 @@ return require("lazy").setup({
         { "<leader>y", "<cmd>Telescope yank_history<cr>", desc = "Yank history" },
         { "<leader>b", group = "Buffer" },
         { "<leader>bn", "<cmd>enew<cr>", desc = "New" },
-        { "<leader>bd", "<cmd>bdelete<cr>", desc = "Delete" },
-        { "<leader>bD", "<cmd>bdelete!<cr>", desc = "Force delete" },
+        { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete" },
+        { "<leader>bD", function() Snacks.bufdelete({force = true}) end, desc = "Force delete" },
         { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete others" },
         { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete on the left" },
         { "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete on the right" },
@@ -299,6 +299,15 @@ return require("lazy").setup({
     opts = {
       size = 20,
       persist_size = false,
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bufdelete = { enabled = true },
+      indent = { enabled = true, animate = { enabled = false }},
     },
   },
   "mhinz/vim-grepper",
