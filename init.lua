@@ -141,9 +141,7 @@ return require("lazy").setup({
         { "<leader>ss", function() require("persistence").load() end, desc = "Load" },
         { "<leader>sS", function() require("persistence").select() end, desc = "Select" },
         { "<leader>sl", function() require("persistence").load({ last = true }) end, desc = "Load last" },
-        { "<leader>k", group = "Quickfix" },
-        { "<leader>ko", "<cmd>copen<cr>", desc = "Open" },
-        { "<leader>kc", "<cmd>cclose<cr>", desc = "Close" },
+        { "<leader>q", function() require("quicker").toggle() end, desc = "Toggle quickfix" },
         { "<leader>r", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
         { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
         { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
@@ -305,6 +303,28 @@ return require("lazy").setup({
     opts = {
       bufdelete = { enabled = true },
       indent = { enabled = true, animate = { enabled = false }},
+    },
+  },
+  {
+    'stevearc/quicker.nvim',
+    event = "FileType qf",
+    opts = {
+      keys = {
+        {
+          ">",
+          function()
+            require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+          end,
+          desc = "Expand quickfix context",
+        },
+        {
+          "<",
+          function()
+            require("quicker").collapse()
+          end,
+          desc = "Collapse quickfix context",
+        },
+      },
     },
   },
   "mhinz/vim-grepper",
