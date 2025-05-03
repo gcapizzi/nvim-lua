@@ -39,7 +39,7 @@ return require("lazy").setup({
     dependencies = {"nvim-lua/plenary.nvim"},
     config = function()
       local actions = require("telescope.actions")
-      require("telescope").setup {
+      require("telescope").setup({
         defaults = {
           mappings = {
             i = {
@@ -50,7 +50,7 @@ return require("lazy").setup({
             }
           }
         }
-      }
+      })
     end
   },
   {
@@ -69,12 +69,12 @@ return require("lazy").setup({
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      require("lspconfig").gopls.setup{ capabilities = capabilities }
-      require("lspconfig").rust_analyzer.setup{ capabilities = capabilities }
-      require("lspconfig").sorbet.setup{
+      require("lspconfig").gopls.setup({ capabilities = capabilities })
+      require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
+      require("lspconfig").sorbet.setup({
         capabilities = capabilities,
         cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
-      }
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
@@ -172,13 +172,13 @@ return require("lazy").setup({
   {
     "ahmedkhalf/project.nvim",
     config = function()
-      require("project_nvim").setup {}
+      require("project_nvim").setup({})
     end
   },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require("lualine").setup {
+      require("lualine").setup({
         options = {
           theme = "catppuccin-macchiato",
           icons_enabled = false,
@@ -188,7 +188,7 @@ return require("lazy").setup({
         sections = {
           lualine_c = {{ 'filename', path = 1 }}
         }
-      }
+      })
     end
   },
   {
@@ -200,7 +200,7 @@ return require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {"vim", "lua", "go", "rust", "ruby", "bash"},
         highlight = {
           enable = true
@@ -208,7 +208,7 @@ return require("lazy").setup({
         indent = {
           enable = true
         }
-      }
+      })
     end
   },
   {
