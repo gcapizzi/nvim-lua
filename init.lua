@@ -55,7 +55,7 @@ return require("lazy").setup({
   },
   {
     "williamboman/mason.nvim",
-    config = true,
+    opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -156,7 +156,6 @@ return require("lazy").setup({
     "catppuccin/nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
     config = function()
       vim.cmd("colorscheme catppuccin-macchiato")
     end
@@ -177,19 +176,17 @@ return require("lazy").setup({
   },
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "catppuccin-macchiato",
-          icons_enabled = false,
-          section_separators = "",
-          component_separators = ""
-        },
-        sections = {
-          lualine_c = {{ 'filename', path = 1 }}
-        }
-      })
-    end
+    opts = {
+      options = {
+        theme = "catppuccin-macchiato",
+        icons_enabled = false,
+        section_separators = "",
+        component_separators = ""
+      },
+      sections = {
+        lualine_c = {{ 'filename', path = 1 }}
+      }
+    }
   },
   {
     'saghen/blink.cmp',
@@ -213,26 +210,26 @@ return require("lazy").setup({
   },
   {
     "lewis6991/gitsigns.nvim",
-    config = true,
+    opts = {},
   },
   {
     "j-hui/fidget.nvim",
     tag = "v1.4.5",
-    config = true,
+    opts = {},
   },
   {
     "gbprod/yanky.nvim",
+    keys = {
+      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }},
+      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }},
+      { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }},
+      { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }},
+      { "<c-p>", "<Plug>(YankyPreviousEntry)"},
+      { "<c-n>", "<Plug>(YankyNextEntry)"},
+    },
     config = function()
       require("yanky").setup({})
       require("telescope").load_extension("yank_history")
-
-      vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
-
-      vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-      vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
     end
   },
   {
@@ -250,12 +247,12 @@ return require("lazy").setup({
   },
   {
     "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({
-        delete_to_trash = true
-      })
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end
+    opts = {
+      delete_to_trash = true
+    },
+    keys = {
+      { "-", "<cmd>Oil<cr>", desc = "Open parent directory" }
+    },
   },
   {
     "vim-test/vim-test",
@@ -266,27 +263,20 @@ return require("lazy").setup({
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
-    config = true,
+    opts = {},
   },
   {
     'akinsho/bufferline.nvim',
     version = "*",
-    config = function()
-      require("bufferline").setup({
-        options = {
-          show_buffer_icons = false,
-          show_buffer_close_icons = false,
-          groups = {
-            items = {
-              require('bufferline.groups').builtin.pinned:with({ icon = "" })
-            }
-          },
-          custom_filter = function(buf, buf_nums)
-            return vim.bo[buf].filetype ~= "qf"
-          end
-        }
-      })
-    end
+    opts = {
+      options = {
+        show_buffer_icons = false,
+        show_buffer_close_icons = false,
+        custom_filter = function(buf, buf_nums)
+          return vim.bo[buf].filetype ~= "qf"
+        end
+      }
+    }
   },
   {
     'akinsho/toggleterm.nvim',
