@@ -143,6 +143,9 @@ return require("lazy").setup({
         { "<leader>sl", function() require("persistence").load({ last = true }) end, desc = "Load last" },
         { "<leader>q", function() require("quicker").toggle() end, desc = "Toggle quickfix" },
         { "<leader>r", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+        { "<leader>v", group = "Version Control" },
+        { "<leader>vo", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
+        { "<leader>vc", "<cmd>DiffviewClose<cr>", desc = "Close diff" },
         { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
         { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
         { "]B", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "First buffer" },
@@ -330,4 +333,5 @@ return require("lazy").setup({
   "wincent/terminus",
   "ntpeters/vim-better-whitespace",
   "github/copilot.vim",
+  "sindrets/diffview.nvim",
 })
