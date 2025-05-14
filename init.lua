@@ -329,13 +329,5 @@ return require("lazy").setup({
   "tpope/vim-projectionist",
   "wincent/terminus",
   "ntpeters/vim-better-whitespace",
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = {},
-  },
+  "github/copilot.vim",
 })
