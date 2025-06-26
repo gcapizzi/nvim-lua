@@ -34,24 +34,14 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
   {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local actions = require("telescope.actions")
-      require("telescope").setup({
-        defaults = {
-          mappings = {
-            i = {
-              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
-            },
-            n = {
-              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
-            }
-          }
-        }
-      })
-    end
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bufdelete = { enabled = true },
+      indent = { enabled = true, animate = { enabled = false } },
+      picker = {},
+    },
   },
   {
     "williamboman/mason.nvim",
@@ -105,19 +95,19 @@ return require("lazy").setup({
       },
       spec = {
         { "<leader>f",  group = "Find" },
-        { "<leader>ff", "<cmd>Telescope find_files<cr>",                             desc = "File by name" },
-        { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                               desc = "Recent File" },
-        { "<leader>fg", "<cmd>Telescope live_grep<cr>",                              desc = "File via live grep" },
-        { "<leader>fw", "<cmd>Telescope grep_string<cr>",                            desc = "File via live grep (current word)" },
+        { "<leader>ff", function() Snacks.picker.files() end,                        desc = "File by name" },
+        { "<leader>fr", function() Snacks.picker.recent() end,                       desc = "Recent File" },
+        { "<leader>fg", function() Snacks.picker.grep() end,                         desc = "File via live grep" },
+        { "<leader>fw", function() Snacks.picker.grep_word() end,                    desc = "File via live grep (current word)" },
         { "<leader>fG", "<cmd>Grepper -tool rg<cr>",                                 desc = "File via batch grep" },
         { "<leader>fW", "<cmd>Grepper -tool rg -cword -noprompt<cr>",                desc = "File via batch grep (current word)" },
-        { "<leader>fb", "<cmd>Telescope buffers<cr>",                                desc = "Buffer" },
-        { "<leader>fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",          desc = "Symbol" },
-        { "<leader>fl", "<cmd>Telescope resume<cr>",                                 desc = "Last search" },
+        { "<leader>fb", function() Snacks.picker.buffers() end,                      desc = "Buffer" },
+        { "<leader>fs", function() Snacks.picker.lsp_symbols() end,                  desc = "Symbol" },
+        { "<leader>fl", function() Snacks.picker.resume() end,                       desc = "Last search" },
         { "<leader>g",  group = "Go to" },
-        { "<leader>gd", "<cmd>Telescope lsp_definitions show_line=false<cr>",        desc = "Definition" },
-        { "<leader>gi", "<cmd>Telescope lsp_implementations show_line=false<cr>",    desc = "Implementation" },
-        { "<leader>gr", "<cmd>Telescope lsp_references show_line=false<cr>",         desc = "References" },
+        { "<leader>gd", function() Snacks.picker.lsp_definitions() end,              desc = "Definition" },
+        { "<leader>gi", function() Snacks.picker.lsp_implementations() end,          desc = "Implementation" },
+        { "<leader>gr", function() Snacks.picker.lsp_references() end,               desc = "References" },
         { "<leader>gD", vim.lsp.buf.definition,                                      desc = "Definition (quickfix) " },
         { "<leader>gI", vim.lsp.buf.implementation,                                  desc = "Implementation (quickfix)" },
         { "<leader>gR", vim.lsp.buf.references,                                      desc = "References (quickfix)" },
@@ -128,7 +118,7 @@ return require("lazy").setup({
         { "<leader>dd", vim.diagnostic.open_float,                                   desc = "Show" },
         { "<leader>dl", vim.diagnostic.setloclist,                                   desc = "List" },
         { "<leader>l",  "<cmd>set hlsearch!<cr>",                                    desc = "Toggle search highligting" },
-        { "<leader>y",  "<cmd>Telescope yank_history<cr>",                           desc = "Yank history" },
+        { "<leader>y",  function() Snacks.picker.yanky() end,                        desc = "Yank history" },
         { "<leader>b",  group = "Buffer" },
         { "<leader>bn", "<cmd>enew<cr>",                                             desc = "New" },
         { "<leader>bd", function() Snacks.bufdelete() end,                           desc = "Delete" },
@@ -236,7 +226,6 @@ return require("lazy").setup({
     },
     config = function()
       require("yanky").setup({})
-      require("telescope").load_extension("yank_history")
     end
   },
   {
@@ -291,15 +280,6 @@ return require("lazy").setup({
     opts = {
       size = 20,
       persist_size = false,
-    },
-  },
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = {
-      bufdelete = { enabled = true },
-      indent = { enabled = true, animate = { enabled = false } },
     },
   },
   {
