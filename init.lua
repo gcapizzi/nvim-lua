@@ -36,7 +36,7 @@ return require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local actions = require("telescope.actions")
       require("telescope").setup({
@@ -60,7 +60,7 @@ return require("lazy").setup({
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = {"gopls", "rust_analyzer", "sorbet"},
+      ensure_installed = { "gopls", "rust_analyzer", "sorbet" },
     }
   },
   {
@@ -80,12 +80,16 @@ return require("lazy").setup({
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client:supports_method("textDocument/formatting") then
-            vim.api.nvim_create_autocmd("BufWritePre", { buffer = args["buf"], callback = function() vim.lsp.buf.format() end })
+            vim.api.nvim_create_autocmd("BufWritePre",
+              { buffer = args["buf"], callback = function() vim.lsp.buf.format() end })
           end
           if client:supports_method("textDocument/documentHighlight") then
-            vim.api.nvim_create_autocmd("CursorHold", { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd("CursorHoldI", { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
-            vim.api.nvim_create_autocmd("CursorMoved", { buffer = args["buf"], callback = function() vim.lsp.buf.clear_references() end })
+            vim.api.nvim_create_autocmd("CursorHold",
+              { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorHoldI",
+              { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
+            vim.api.nvim_create_autocmd("CursorMoved",
+              { buffer = args["buf"], callback = function() vim.lsp.buf.clear_references() end })
           end
         end,
       })
@@ -100,58 +104,58 @@ return require("lazy").setup({
         separator = ">",
       },
       spec = {
-        { "<leader>f", group = "Find" },
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File by name" },
-        { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-        { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "File via live grep" },
-        { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "File via live grep (current word)" },
-        { "<leader>fG", "<cmd>Grepper -tool rg<cr>", desc = "File via batch grep" },
-        { "<leader>fW", "<cmd>Grepper -tool rg -cword -noprompt<cr>", desc = "File via batch grep (current word)" },
-        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffer" },
-        { "<leader>fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Symbol" },
-        { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last search" },
-        { "<leader>g", group = "Go to" },
-        { "<leader>gd", "<cmd>Telescope lsp_definitions show_line=false<cr>", desc = "Definition" },
-        { "<leader>gi", "<cmd>Telescope lsp_implementations show_line=false<cr>", desc = "Implementation" },
-        { "<leader>gr", "<cmd>Telescope lsp_references show_line=false<cr>", desc = "References" },
-        { "<leader>gD", vim.lsp.buf.definition, desc = "Definition (quickfix) " },
-        { "<leader>gI", vim.lsp.buf.implementation, desc = "Implementation (quickfix)" },
-        { "<leader>gR", vim.lsp.buf.references, desc = "References (quickfix)" },
-        { "<leader>c", group = "Code" },
-        { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
-        { "<leader>ca", vim.lsp.buf.code_action, desc = "Action", mode = { "n", "v" } },
-        { "<leader>d", group = "Diagnostics" },
-        { "<leader>dd", vim.diagnostic.open_float, desc = "Show" },
-        { "<leader>dl", vim.diagnostic.setloclist, desc = "List" },
-        { "<leader>l", "<cmd>set hlsearch!<cr>", desc = "Toggle search highligting" },
-        { "<leader>y", "<cmd>Telescope yank_history<cr>", desc = "Yank history" },
-        { "<leader>b", group = "Buffer" },
-        { "<leader>bn", "<cmd>enew<cr>", desc = "New" },
-        { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete" },
-        { "<leader>bD", function() Snacks.bufdelete({force = true}) end, desc = "Force delete" },
-        { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete others" },
-        { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete on the left" },
-        { "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete on the right" },
-        { "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin" },
-        { "<leader>t", group = "Test" },
-        { "<leader>tf", "<cmd>TestFile<cr>", desc = "File" },
-        { "<leader>tl", "<cmd>TestLast<cr>", desc = "Last" },
-        { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Nearest" },
-        { "<leader>s", group = "Session" },
-        { "<leader>ss", function() require("persistence").load() end, desc = "Load" },
-        { "<leader>sS", function() require("persistence").select() end, desc = "Select" },
+        { "<leader>f",  group = "Find" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>",                             desc = "File by name" },
+        { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                               desc = "Recent File" },
+        { "<leader>fg", "<cmd>Telescope live_grep<cr>",                              desc = "File via live grep" },
+        { "<leader>fw", "<cmd>Telescope grep_string<cr>",                            desc = "File via live grep (current word)" },
+        { "<leader>fG", "<cmd>Grepper -tool rg<cr>",                                 desc = "File via batch grep" },
+        { "<leader>fW", "<cmd>Grepper -tool rg -cword -noprompt<cr>",                desc = "File via batch grep (current word)" },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>",                                desc = "Buffer" },
+        { "<leader>fs", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",          desc = "Symbol" },
+        { "<leader>fl", "<cmd>Telescope resume<cr>",                                 desc = "Last search" },
+        { "<leader>g",  group = "Go to" },
+        { "<leader>gd", "<cmd>Telescope lsp_definitions show_line=false<cr>",        desc = "Definition" },
+        { "<leader>gi", "<cmd>Telescope lsp_implementations show_line=false<cr>",    desc = "Implementation" },
+        { "<leader>gr", "<cmd>Telescope lsp_references show_line=false<cr>",         desc = "References" },
+        { "<leader>gD", vim.lsp.buf.definition,                                      desc = "Definition (quickfix) " },
+        { "<leader>gI", vim.lsp.buf.implementation,                                  desc = "Implementation (quickfix)" },
+        { "<leader>gR", vim.lsp.buf.references,                                      desc = "References (quickfix)" },
+        { "<leader>c",  group = "Code" },
+        { "<leader>cr", vim.lsp.buf.rename,                                          desc = "Rename" },
+        { "<leader>ca", vim.lsp.buf.code_action,                                     desc = "Action",                            mode = { "n", "v" } },
+        { "<leader>d",  group = "Diagnostics" },
+        { "<leader>dd", vim.diagnostic.open_float,                                   desc = "Show" },
+        { "<leader>dl", vim.diagnostic.setloclist,                                   desc = "List" },
+        { "<leader>l",  "<cmd>set hlsearch!<cr>",                                    desc = "Toggle search highligting" },
+        { "<leader>y",  "<cmd>Telescope yank_history<cr>",                           desc = "Yank history" },
+        { "<leader>b",  group = "Buffer" },
+        { "<leader>bn", "<cmd>enew<cr>",                                             desc = "New" },
+        { "<leader>bd", function() Snacks.bufdelete() end,                           desc = "Delete" },
+        { "<leader>bD", function() Snacks.bufdelete({ force = true }) end,           desc = "Force delete" },
+        { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>",                            desc = "Delete others" },
+        { "<leader>bl", "<cmd>BufferLineCloseLeft<cr>",                              desc = "Delete on the left" },
+        { "<leader>br", "<cmd>BufferLineCloseRight<cr>",                             desc = "Delete on the right" },
+        { "<leader>bp", "<cmd>BufferLineTogglePin<cr>",                              desc = "Pin" },
+        { "<leader>t",  group = "Test" },
+        { "<leader>tf", "<cmd>TestFile<cr>",                                         desc = "File" },
+        { "<leader>tl", "<cmd>TestLast<cr>",                                         desc = "Last" },
+        { "<leader>tn", "<cmd>TestNearest<cr>",                                      desc = "Nearest" },
+        { "<leader>s",  group = "Session" },
+        { "<leader>ss", function() require("persistence").load() end,                desc = "Load" },
+        { "<leader>sS", function() require("persistence").select() end,              desc = "Select" },
         { "<leader>sl", function() require("persistence").load({ last = true }) end, desc = "Load last" },
-        { "<leader>q", function() require("quicker").toggle() end, desc = "Toggle quickfix" },
-        { "<leader>r", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-        { "<leader>v", group = "Version Control" },
-        { "<leader>vo", "<cmd>DiffviewOpen<cr>", desc = "Open diff" },
-        { "<leader>vc", "<cmd>DiffviewClose<cr>", desc = "Close diff" },
-        { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-        { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
-        { "]B", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "First buffer" },
-        { "[B", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Last buffer" },
-        { "]v", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
-        { "[v", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+        { "<leader>q",  function() require("quicker").toggle() end,                  desc = "Toggle quickfix" },
+        { "<leader>r",  "<cmd>ToggleTerm<cr>",                                       desc = "Toggle terminal" },
+        { "<leader>v",  group = "Version Control" },
+        { "<leader>vo", "<cmd>DiffviewOpen<cr>",                                     desc = "Open diff" },
+        { "<leader>vc", "<cmd>DiffviewClose<cr>",                                    desc = "Close diff" },
+        { "]b",         "<cmd>BufferLineCycleNext<cr>",                              desc = "Next buffer" },
+        { "[b",         "<cmd>BufferLineCyclePrev<cr>",                              desc = "Previous buffer" },
+        { "]B",         "<cmd>BufferLineGoToBuffer -1<cr>",                          desc = "First buffer" },
+        { "[B",         "<cmd>BufferLineGoToBuffer 1<cr>",                           desc = "Last buffer" },
+        { "]v",         "<cmd>BufferLineMoveNext<cr>",                               desc = "Move buffer right" },
+        { "[v",         "<cmd>BufferLineMovePrev<cr>",                               desc = "Move buffer left" },
       }
     },
   },
@@ -165,7 +169,7 @@ return require("lazy").setup({
   },
   {
     "goolord/alpha-nvim",
-    config = function ()
+    config = function()
       local startify = require("alpha.themes.startify")
       startify.nvim_web_devicons.enabled = false
       require("alpha").setup(startify.config)
@@ -187,7 +191,7 @@ return require("lazy").setup({
         component_separators = ""
       },
       sections = {
-        lualine_c = {{ 'filename', path = 1 }}
+        lualine_c = { { 'filename', path = 1 } }
       }
     }
   },
@@ -201,7 +205,7 @@ return require("lazy").setup({
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = {"vim", "lua", "go", "rust", "ruby", "bash"},
+        ensure_installed = { "vim", "lua", "go", "rust", "ruby", "bash" },
         highlight = {
           enable = true
         },
@@ -223,12 +227,12 @@ return require("lazy").setup({
   {
     "gbprod/yanky.nvim",
     keys = {
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }},
-      { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }},
-      { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }},
-      { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }},
-      { "<c-p>", "<Plug>(YankyPreviousEntry)"},
-      { "<c-n>", "<Plug>(YankyNextEntry)"},
+      { "p",     "<Plug>(YankyPutAfter)",     mode = { "n", "x" } },
+      { "P",     "<Plug>(YankyPutBefore)",    mode = { "n", "x" } },
+      { "gp",    "<Plug>(YankyGPutAfter)",    mode = { "n", "x" } },
+      { "gP",    "<Plug>(YankyGPutBefore)",   mode = { "n", "x" } },
+      { "<c-p>", "<Plug>(YankyPreviousEntry)" },
+      { "<c-n>", "<Plug>(YankyNextEntry)" },
     },
     config = function()
       require("yanky").setup({})
@@ -295,7 +299,7 @@ return require("lazy").setup({
     lazy = false,
     opts = {
       bufdelete = { enabled = true },
-      indent = { enabled = true, animate = { enabled = false }},
+      indent = { enabled = true, animate = { enabled = false } },
     },
   },
   {
