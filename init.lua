@@ -163,12 +163,6 @@ return require("lazy").setup({
     end
   },
   {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup({})
-    end
-  },
-  {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
@@ -318,4 +312,5 @@ return require("lazy").setup({
   "ntpeters/vim-better-whitespace",
   "github/copilot.vim",
   "sindrets/diffview.nvim",
+  "airblade/vim-rooter",
 })
