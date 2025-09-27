@@ -43,27 +43,25 @@ return require("lazy").setup({
     },
   },
   {
-    "williamboman/mason.nvim",
+    'saghen/blink.cmp',
+    version = '1.*',
     opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = { "gopls", "rust_analyzer", "sorbet" },
-    }
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = { 'saghen/blink.cmp' },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
     config = function()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "gopls", "rust_analyzer", "sorbet" },
+      })
 
-      require("lspconfig").gopls.setup({ capabilities = capabilities })
-      require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
-      require("lspconfig").sorbet.setup({
-        capabilities = capabilities,
+      vim.lsp.config('sorbet', {
         cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
       })
+      vim.lsp.enable('sorbet')
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
