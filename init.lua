@@ -43,11 +43,6 @@ return require("lazy").setup({
     },
   },
   {
-    'saghen/blink.cmp',
-    version = '1.*',
-    opts = {},
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
@@ -293,9 +288,7 @@ return require("lazy").setup({
       },
     },
   },
-  {
-    "ibhagwan/fzf-lua",
-  },
+  "ibhagwan/fzf-lua",
   "mhinz/vim-grepper",
   "wellle/targets.vim",
   "tpope/vim-surround",
