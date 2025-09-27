@@ -99,9 +99,6 @@ return require("lazy").setup({
         { "<leader>gd", function() require('fzf-lua').lsp_definitions() end,         desc = "Definition" },
         { "<leader>gi", function() require('fzf-lua').lsp_implementations() end,     desc = "Implementation" },
         { "<leader>gr", function() require('fzf-lua').lsp_references() end,          desc = "References" },
-        { "<leader>gD", vim.lsp.buf.definition,                                      desc = "Definition (quickfix) " },
-        { "<leader>gI", vim.lsp.buf.implementation,                                  desc = "Implementation (quickfix)" },
-        { "<leader>gR", vim.lsp.buf.references,                                      desc = "References (quickfix)" },
         { "<leader>c",  group = "Code" },
         { "<leader>cr", vim.lsp.buf.rename,                                          desc = "Rename" },
         { "<leader>ca", vim.lsp.buf.code_action,                                     desc = "Action",                           mode = { "n", "v" } },
@@ -269,24 +266,7 @@ return require("lazy").setup({
   {
     'stevearc/quicker.nvim',
     event = "FileType qf",
-    opts = {
-      keys = {
-        {
-          ">",
-          function()
-            require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
-          end,
-          desc = "Expand quickfix context",
-        },
-        {
-          "<",
-          function()
-            require("quicker").collapse()
-          end,
-          desc = "Collapse quickfix context",
-        },
-      },
-    },
+    opts = {},
   },
   "ibhagwan/fzf-lua",
   "mhinz/vim-grepper",
@@ -298,7 +278,6 @@ return require("lazy").setup({
   "tpope/vim-sleuth",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
-  "tpope/vim-projectionist",
   "wincent/terminus",
   "ntpeters/vim-better-whitespace",
   "github/copilot.vim",
