@@ -101,7 +101,7 @@ return require("lazy").setup({
         { "<leader>gr", function() require('fzf-lua').lsp_references() end,          desc = "References" },
         { "<leader>c",  group = "Code" },
         { "<leader>cr", vim.lsp.buf.rename,                                          desc = "Rename" },
-        { "<leader>ca", vim.lsp.buf.code_action,                                     desc = "Action",                           mode = { "n", "v" } },
+        { "<leader>ca", function() require('fzf-lua').lsp_code_actions() end,        desc = "Action", mode = { "n", "v" } },
         { "<leader>d",  group = "Diagnostics" },
         { "<leader>dd", vim.diagnostic.open_float,                                   desc = "Show" },
         { "<leader>dl", vim.diagnostic.setloclist,                                   desc = "List" },
