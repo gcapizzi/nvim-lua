@@ -67,10 +67,15 @@ return require("lazy").setup({
         },
       })
       require('mini.statusline').setup()
-      require('mini.trailspace').setup()
 
       require('mini.misc').setup_auto_root()
     end,
+  },
+  {
+    "nvim-mini/mini.trailspace",
+    version = false,
+    event = "VeryLazy",
+    opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
