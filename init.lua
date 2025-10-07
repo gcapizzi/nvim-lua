@@ -65,6 +65,9 @@ return require("lazy").setup({
           signs = { add = '┃', change = '┃', delete = '▁' },
         },
       })
+      require('mini.trailspace').setup()
+
+      require('mini.misc').setup_auto_root()
     end,
   },
   {
@@ -283,8 +286,6 @@ return require("lazy").setup({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "wincent/terminus",
-  "ntpeters/vim-better-whitespace",
   "github/copilot.vim",
   "sindrets/diffview.nvim",
-  "airblade/vim-rooter",
 })
