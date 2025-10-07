@@ -209,9 +209,7 @@ return require("lazy").setup({
       { "<c-p>", "<Plug>(YankyPreviousEntry)" },
       { "<c-n>", "<Plug>(YankyNextEntry)" },
     },
-    config = function()
-      require("yanky").setup({})
-    end
+    opts = {},
   },
   {
     "gbprod/substitute.nvim",
