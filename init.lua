@@ -135,7 +135,6 @@ return require("lazy").setup({
         { "<leader>d",  group = "Diagnostics" },
         { "<leader>dd", vim.diagnostic.open_float,                                   desc = "Show" },
         { "<leader>dl", vim.diagnostic.setloclist,                                   desc = "List" },
-        { "<leader>l",  "<cmd>set hlsearch!<cr>",                                    desc = "Toggle search highligting" },
         { "<leader>b",  group = "Buffer" },
         { "<leader>bn", "<cmd>enew<cr>",                                             desc = "New" },
         { "<leader>bd", function() Snacks.bufdelete() end,                           desc = "Delete" },
