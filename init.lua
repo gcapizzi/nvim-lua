@@ -276,7 +276,6 @@ return require("lazy").setup({
   "tpope/vim-sleuth",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
-  "wincent/terminus",
   "github/copilot.vim",
   "sindrets/diffview.nvim",
 })
