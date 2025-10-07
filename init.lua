@@ -59,6 +59,7 @@ return require("lazy").setup({
     "nvim-mini/mini.nvim",
     version = false,
     config = function()
+      require('mini.ai').setup()
       require('mini.diff').setup({
         view = {
           style = 'sign',
@@ -264,7 +265,6 @@ return require("lazy").setup({
   },
   "ibhagwan/fzf-lua",
   "mhinz/vim-grepper",
-  "wellle/targets.vim",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-unimpaired",
