@@ -52,7 +52,20 @@ return require("lazy").setup({
         },
       },
       indent = { enabled = true, animate = { enabled = false } },
+      input = { enabled = true },
     },
+  },
+  {
+    "nvim-mini/mini.nvim",
+    version = false,
+    config = function()
+      require('mini.diff').setup({
+        view = {
+          style = 'sign',
+          signs = { add = '┃', change = '┃', delete = '▁' },
+        },
+      })
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -185,10 +198,6 @@ return require("lazy").setup({
         }
       })
     end
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {},
   },
   {
     "j-hui/fidget.nvim",
