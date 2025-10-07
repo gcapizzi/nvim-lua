@@ -65,6 +65,7 @@ return require("lazy").setup({
           signs = { add = '┃', change = '┃', delete = '▁' },
         },
       })
+      require('mini.statusline').setup()
       require('mini.trailspace').setup()
 
       require('mini.misc').setup_auto_root()
@@ -167,20 +168,6 @@ return require("lazy").setup({
     config = function()
       vim.cmd("colorscheme catppuccin-macchiato")
     end
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        theme = "catppuccin-macchiato",
-        icons_enabled = false,
-        section_separators = "",
-        component_separators = ""
-      },
-      sections = {
-        lualine_c = { { 'filename', path = 1 } }
-      }
-    }
   },
   {
     'saghen/blink.cmp',
