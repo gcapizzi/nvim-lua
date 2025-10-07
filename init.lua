@@ -268,7 +268,6 @@ return require("lazy").setup({
     opts = {},
   },
   "ibhagwan/fzf-lua",
-  "mhinz/vim-grepper",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-unimpaired",
