@@ -259,7 +259,13 @@ return require("lazy").setup({
     event = "FileType qf",
     opts = {},
   },
-  "ibhagwan/fzf-lua",
+  {
+    "ibhagwan/fzf-lua",
+    config = function()
+      require("fzf-lua").setup({})
+      require("fzf-lua").register_ui_select()
+    end,
+  },
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-unimpaired",
