@@ -79,7 +79,7 @@ return require("lazy").setup({
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "gopls", "rust_analyzer", "sorbet", "pyright", "ruff" },
+        ensure_installed = { "gopls", "rust_analyzer", "sorbet", "ty", "ruff" },
       })
 
       vim.lsp.config('sorbet', {
