@@ -1,28 +1,28 @@
 vim.pack.add({
-  'https://github.com/folke/snacks.nvim',
-  'https://github.com/folke/lazydev.nvim',
-  'https://github.com/nvim-mini/mini.nvim',
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-  'https://github.com/neovim/nvim-lspconfig',
-  'https://github.com/mason-org/mason.nvim',
-  'https://github.com/mason-org/mason-lspconfig.nvim',
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('1.x') },
-  'https://github.com/j-hui/fidget.nvim',
-  'https://github.com/gbprod/yanky.nvim',
-  'https://github.com/gbprod/substitute.nvim',
-  'https://github.com/stevearc/oil.nvim',
-  'https://github.com/stevearc/conform.nvim',
-  'https://github.com/RRethy/vim-illuminate',
-  'https://github.com/vim-test/vim-test',
-  'https://github.com/akinsho/bufferline.nvim',
-  'https://github.com/ibhagwan/fzf-lua',
-  'https://github.com/tpope/vim-surround',
-  'https://github.com/tpope/vim-repeat',
-  'https://github.com/tpope/vim-unimpaired',
-  'https://github.com/tpope/vim-eunuch',
-  'https://github.com/tpope/vim-sleuth',
-  'https://github.com/tpope/vim-fugitive',
-  'https://github.com/tpope/vim-rhubarb',
+  "https://github.com/folke/snacks.nvim",
+  "https://github.com/folke/lazydev.nvim",
+  "https://github.com/nvim-mini/mini.nvim",
+  { src = "https://github.com/catppuccin/nvim",  name = "catppuccin" },
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/mason-org/mason.nvim",
+  "https://github.com/mason-org/mason-lspconfig.nvim",
+  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
+  "https://github.com/j-hui/fidget.nvim",
+  "https://github.com/gbprod/yanky.nvim",
+  "https://github.com/gbprod/substitute.nvim",
+  "https://github.com/stevearc/oil.nvim",
+  "https://github.com/stevearc/conform.nvim",
+  "https://github.com/RRethy/vim-illuminate",
+  "https://github.com/vim-test/vim-test",
+  "https://github.com/akinsho/bufferline.nvim",
+  "https://github.com/ibhagwan/fzf-lua",
+  "https://github.com/tpope/vim-surround",
+  "https://github.com/tpope/vim-repeat",
+  "https://github.com/tpope/vim-unimpaired",
+  "https://github.com/tpope/vim-eunuch",
+  "https://github.com/tpope/vim-sleuth",
+  "https://github.com/tpope/vim-fugitive",
+  "https://github.com/tpope/vim-rhubarb",
 })
 
 -- base
@@ -41,7 +41,7 @@ vim.opt.listchars = {
   tab = "‣ ",
 }
 
-vim.cmd.colorscheme('catppuccin-macchiato')
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.g.mapleader = ","
 
@@ -49,15 +49,15 @@ vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>")
 
 -- lsp
 
-require('mason').setup()
-require('mason-lspconfig').setup({
-  ensure_installed = { 'gopls', 'rust_analyzer', 'sorbet', 'ty', 'ruff', 'lua_ls' },
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "gopls", "rust_analyzer", "sorbet", "ty", "ruff", "lua_ls" },
 })
 
-vim.lsp.config('sorbet', {
+vim.lsp.config("sorbet", {
   cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
 })
-vim.lsp.enable('sorbet')
+vim.lsp.enable("sorbet")
 
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 
@@ -83,23 +83,23 @@ vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete({ force = true }) 
 
 -- mini
 
-require('mini.ai').setup()
-require('mini.diff').setup({
+require("mini.ai").setup()
+require("mini.diff").setup({
   view = {
-    style = 'sign',
-    signs = { add = '┃', change = '┃', delete = '▁' },
+    style = "sign",
+    signs = { add = "┃", change = "┃", delete = "▁" },
   },
 })
-require('mini.statusline').setup()
-require('mini.misc').setup_auto_root()
-require('mini.trailspace').setup()
+require("mini.statusline").setup()
+require("mini.misc").setup_auto_root()
+require("mini.trailspace").setup()
 vim.api.nvim_create_autocmd("User", {
   pattern = "SnacksDashboardOpened",
   callback = function(args)
     vim.b[args.buf].minitrailspace_disable = true
   end,
 })
-local starter = require('mini.starter')
+local starter = require("mini.starter")
 starter.setup({
   evaluate_single = true,
   items = {
@@ -111,19 +111,19 @@ starter.setup({
 
 -- yanky / substitute
 
-require('yanky').setup()
+require("yanky").setup()
 
-vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
-local substitute = require('substitute')
+local substitute = require("substitute")
 substitute.setup({
-  on_substitute = require('yanky.integration').substitute(),
+  on_substitute = require("yanky.integration").substitute(),
 })
 
 vim.keymap.set("n", "s", substitute.operator, { noremap = true })
@@ -133,7 +133,7 @@ vim.keymap.set("x", "s", substitute.visual, { noremap = true })
 
 -- oil
 
-require('oil').setup({
+require("oil").setup({
   delete_to_trash = true
 })
 
@@ -147,11 +147,11 @@ vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<cr>")
 
 -- bufferline
 
-require('bufferline').setup({
+require("bufferline").setup({
   options = {
     show_buffer_icons = false,
     show_buffer_close_icons = false,
-    custom_filter = function(buf, buf_nums)
+    custom_filter = function(buf)
       return vim.bo[buf].filetype ~= "qf"
     end
   }
@@ -195,16 +195,16 @@ vim.keymap.set("n", "<leader>fl", fzf_lua.resume)
 
 -- conform
 
-require('conform').setup({
+require("conform").setup({
   format_on_save = {
     timeout_ms = 500,
-    lsp_format = 'fallback',
+    lsp_format = "fallback",
   },
 })
 
 -- others
 
-require('blink.cmp').setup()
-require('fidget').setup()
-require('illuminate').configure()
-require('lazydev').setup()
+require("blink.cmp").setup({})
+require("fidget").setup({})
+require("illuminate").configure({})
+require("lazydev").setup({})
