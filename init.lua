@@ -73,17 +73,6 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 
 require("snacks").setup({
   bufdelete = { enabled = true },
-  dashboard = {
-    enabled = true,
-    sections = {
-      { section = "header" },
-      { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-      { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-      { icon = " ", title = "Recent Files ", file = vim.fn.fnamemodify(".", ":~") },
-      { section = "recent_files", cwd = true, limit = 8, indent = 2, padding = 1 },
-      { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-    },
-  },
   indent = { enabled = true, animate = { enabled = false } },
   input = { enabled = true },
 })
@@ -108,6 +97,15 @@ vim.api.nvim_create_autocmd("User", {
   callback = function(args)
     vim.b[args.buf].minitrailspace_disable = true
   end,
+})
+local starter = require('mini.starter')
+starter.setup({
+  evaluate_single = true,
+  items = {
+    starter.sections.builtin_actions(),
+    starter.sections.recent_files(5, false),
+    starter.sections.recent_files(5, true),
+  },
 })
 
 -- yanky / substitute
