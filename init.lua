@@ -188,7 +188,7 @@ local fzf_lua = require("fzf-lua")
 fzf_lua.setup({
   actions = {
     files = {
-      ["enter"] = FzfLua.actions.file_edit,
+      ["enter"] = fzf_lua.actions.file_edit,
     },
   }
 })
