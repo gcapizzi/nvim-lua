@@ -93,12 +93,6 @@ require("mini.diff").setup({
 require("mini.statusline").setup()
 require("mini.misc").setup_auto_root()
 require("mini.trailspace").setup()
-vim.api.nvim_create_autocmd("User", {
-  pattern = "SnacksDashboardOpened",
-  callback = function(args)
-    vim.b[args.buf].minitrailspace_disable = true
-  end,
-})
 local starter = require("mini.starter")
 starter.setup({
   evaluate_single = true,
