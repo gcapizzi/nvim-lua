@@ -13,6 +13,10 @@
       "rev": "df2a1f9f3392d688397e945544a30aec8fc9b4c7",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "conform.nvim": {
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"
@@ -56,6 +60,10 @@
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
+    },
+    "vim-illuminate": {
+      "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
+      "src": "https://github.com/RRethy/vim-illuminate"
     },
     "vim-repeat": {
       "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",

@@ -10,6 +10,8 @@ vim.pack.add({
   'https://github.com/gbprod/yanky.nvim',
   'https://github.com/gbprod/substitute.nvim',
   'https://github.com/stevearc/oil.nvim',
+  'https://github.com/stevearc/conform.nvim',
+  'https://github.com/RRethy/vim-illuminate',
   'https://github.com/vim-test/vim-test',
   'https://github.com/akinsho/bufferline.nvim',
   'https://github.com/ibhagwan/fzf-lua',
@@ -55,21 +57,6 @@ vim.lsp.config('sorbet', {
   cmd = { "env", "SRB_SKIP_GEM_RBIS=1", ".vscode/run-sorbet", "--lsp" }
 })
 vim.lsp.enable('sorbet')
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client:supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", { buffer = args["buf"], callback = function() vim.lsp.buf.format() end })
-    end
-
-    if client:supports_method("textDocument/documentHighlight") then
-      vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, { buffer = args["buf"], callback = function() vim.lsp.buf.document_highlight() end })
-      vim.api.nvim_create_autocmd("CursorMoved", { buffer = args["buf"], callback = function() vim.lsp.buf.clear_references() end })
-    end
-  end,
-})
 
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 
@@ -207,7 +194,17 @@ vim.keymap.set("n", "<leader>gr", fzf_lua.lsp_references)
 vim.keymap.set("n", "<leader>ca", fzf_lua.lsp_code_actions)
 vim.keymap.set("n", "<leader>fl", fzf_lua.resume)
 
+-- conform
+
+require('conform').setup({
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = 'fallback',
+  },
+})
+
 -- others
 
 require('blink.cmp').setup()
 require('fidget').setup()
+require('illuminate').configure()
