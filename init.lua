@@ -174,21 +174,6 @@ return require("lazy").setup({
     opts = {},
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "vim", "lua", "go", "rust", "ruby", "bash" },
-        highlight = {
-          enable = true
-        },
-        indent = {
-          enable = true
-        }
-      })
-    end
-  },
-  {
     "j-hui/fidget.nvim",
     tag = "v1.4.5",
     opts = {},
