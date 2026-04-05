@@ -73,13 +73,9 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 -- snacks
 
 require("snacks").setup({
-  bufdelete = { enabled = true },
   indent = { enabled = true, animate = { enabled = false } },
   input = { enabled = true },
 })
-
-vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete() end)
-vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete({ force = true }) end)
 
 -- mini
 
@@ -102,6 +98,10 @@ starter.setup({
     starter.sections.recent_files(5, true),
   },
 })
+require("mini.bufremove").setup()
+
+vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
+vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
 
 -- yanky / substitute
 
