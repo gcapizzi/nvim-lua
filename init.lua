@@ -1,5 +1,6 @@
 vim.pack.add({
   'https://github.com/folke/snacks.nvim',
+  'https://github.com/folke/lazydev.nvim',
   'https://github.com/nvim-mini/mini.nvim',
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
   'https://github.com/neovim/nvim-lspconfig',
@@ -50,7 +51,7 @@ vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>")
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'gopls', 'rust_analyzer', 'sorbet', 'ty', 'ruff' },
+  ensure_installed = { 'gopls', 'rust_analyzer', 'sorbet', 'ty', 'ruff', 'lua_ls' },
 })
 
 vim.lsp.config('sorbet', {
@@ -206,3 +207,4 @@ require('conform').setup({
 require('blink.cmp').setup()
 require('fidget').setup()
 require('illuminate').configure()
+require('lazydev').setup()
