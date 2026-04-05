@@ -27,12 +27,12 @@ vim.pack.add({
 
 -- base
 
-vim.o.number = true
-vim.o.cursorline = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.undofile = true
-vim.o.updatetime = 500
+vim.opt.number = true
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.undofile = true
+vim.opt.updatetime = 500
 vim.opt.listchars = {
   eol = "¬",
   space = "·",
