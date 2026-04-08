@@ -7,7 +7,6 @@ vim.pack.add({
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
-  "https://github.com/j-hui/fidget.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/stevearc/oil.nvim",
@@ -99,6 +98,7 @@ starter.setup({
   },
 })
 require("mini.bufremove").setup()
+require('mini.notify').setup()
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
@@ -199,6 +199,5 @@ require("conform").setup({
 -- others
 
 require("blink.cmp").setup({})
-require("fidget").setup({})
 require("illuminate").configure({})
 require("lazydev").setup({})
