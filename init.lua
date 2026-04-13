@@ -1,5 +1,4 @@
 vim.pack.add({
-  "https://github.com/folke/snacks.nvim",
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/nvim-mini/mini.nvim",
   { src = "https://github.com/catppuccin/nvim",  name = "catppuccin" },
@@ -22,6 +21,7 @@ vim.pack.add({
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/tpope/vim-rhubarb",
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" }
 })
 
 -- base
@@ -69,13 +69,6 @@ vim.diagnostic.config({
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 
--- snacks
-
-require("snacks").setup({
-  indent = { enabled = true, animate = { enabled = false } },
-  input = { enabled = true },
-})
-
 -- mini
 
 require("mini.ai").setup()
@@ -99,6 +92,12 @@ starter.setup({
 })
 require("mini.bufremove").setup()
 require('mini.notify').setup()
+local indentscope = require("mini.indentscope")
+indentscope.setup({
+  draw = { animation = indentscope.gen_animation.none() },
+  options = { try_as_border = true },
+  symbol = "│",
+})
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
@@ -194,6 +193,12 @@ require("conform").setup({
     timeout_ms = 500,
     lsp_format = "fallback",
   },
+})
+
+-- indent-blankline
+
+require("ibl").setup({
+  indent = { char = "│" }
 })
 
 -- others
