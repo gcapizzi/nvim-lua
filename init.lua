@@ -1,11 +1,9 @@
 vim.pack.add({
-  "https://github.com/folke/lazydev.nvim",
   "https://github.com/nvim-mini/mini.nvim",
-  { src = "https://github.com/catppuccin/nvim",  name = "catppuccin" },
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
-  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
+  "https://github.com/folke/lazydev.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/stevearc/oil.nvim",
@@ -21,7 +19,9 @@ vim.pack.add({
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/tpope/vim-rhubarb",
-  { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" }
+  { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" },
+  { src = "https://github.com/saghen/blink.cmp",                    version = vim.version.range("1.x") },
 })
 
 -- base
