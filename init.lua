@@ -12,9 +12,6 @@ vim.pack.add({
   "https://github.com/vim-test/vim-test",
   "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/ibhagwan/fzf-lua",
-  "https://github.com/tpope/vim-surround",
-  "https://github.com/tpope/vim-repeat",
-  "https://github.com/tpope/vim-unimpaired",
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-fugitive",
@@ -25,20 +22,6 @@ vim.pack.add({
 })
 
 -- base
-
-vim.opt.number = true
-vim.opt.cursorline = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.undofile = true
-vim.opt.updatetime = 500
-vim.opt.listchars = {
-  eol = "¬",
-  space = "·",
-  extends = "«",
-  precedes = "»",
-  tab = "‣ ",
-}
 
 vim.cmd.colorscheme("catppuccin-macchiato")
 
@@ -99,6 +82,15 @@ indentscope.setup({
   options = { try_as_border = true },
   symbol = "│",
 })
+require("mini.basics").setup({
+  options = { basic = true, extra_ui = true },
+  mappings = { basic = true, windows = true },
+})
+require("mini.bracketed").setup()
+require("mini.move").setup({
+  mappings = { line_down = "]e", line_up = "[e" },
+})
+require("mini.surround").setup()
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)

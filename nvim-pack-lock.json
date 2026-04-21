@@ -65,10 +65,6 @@
       "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
       "src": "https://github.com/RRethy/vim-illuminate"
     },
-    "vim-repeat": {
-      "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
-      "src": "https://github.com/tpope/vim-repeat"
-    },
     "vim-rhubarb": {
       "rev": "5496d7c94581c4c9ad7430357449bb57fc59f501",
       "src": "https://github.com/tpope/vim-rhubarb"
@@ -77,17 +73,9 @@
       "rev": "be69bff86754b1aa5adcbb527d7fcd1635a84080",
       "src": "https://github.com/tpope/vim-sleuth"
     },
-    "vim-surround": {
-      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
-      "src": "https://github.com/tpope/vim-surround"
-    },
     "vim-test": {
       "rev": "6eb2e5e7b32c321d373d2954199f4510be804713",
       "src": "https://github.com/vim-test/vim-test"
-    },
-    "vim-unimpaired": {
-      "rev": "db65482581a28e4ccf355be297f1864a4e66985c",
-      "src": "https://github.com/tpope/vim-unimpaired"
     },
     "yanky.nvim": {
       "rev": "784188e0a7363e762e53140f39124d786aec0832",
