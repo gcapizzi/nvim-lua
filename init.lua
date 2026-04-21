@@ -45,6 +45,7 @@ vim.cmd.colorscheme("catppuccin-macchiato")
 vim.g.mapleader = ","
 
 vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>")
+vim.keymap.set("n", "<leader>pu", vim.pack.update)
 
 -- lsp
 
