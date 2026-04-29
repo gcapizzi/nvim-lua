@@ -87,9 +87,7 @@ require("mini.basics").setup({
   mappings = { basic = true, windows = true },
 })
 require("mini.bracketed").setup()
-require("mini.move").setup({
-  mappings = { line_down = "]e", line_up = "[e" },
-})
+require("mini.move").setup()
 require("mini.surround").setup()
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
