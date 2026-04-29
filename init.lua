@@ -88,7 +88,9 @@ require("mini.basics").setup({
 })
 require("mini.bracketed").setup()
 require("mini.move").setup()
-require("mini.surround").setup()
+require("mini.surround").setup({
+  mappings = { add = 'ys', delete = 'ds', replace = 'cs' }
+})
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
