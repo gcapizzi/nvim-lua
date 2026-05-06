@@ -18,7 +18,6 @@ vim.pack.add({
   "https://github.com/tpope/vim-rhubarb",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" },
-  { src = "https://github.com/saghen/blink.cmp",                    version = vim.version.range("1.x") },
 })
 
 -- base
@@ -29,6 +28,10 @@ vim.g.mapleader = ","
 
 vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>")
 vim.keymap.set("n", "<leader>pu", vim.pack.update)
+
+vim.o.complete = ".,w,b,o"
+vim.o.autocomplete = true
+vim.o.autocompletedelay = 500
 
 -- lsp
 
@@ -196,6 +199,5 @@ require("ibl").setup({
 
 -- others
 
-require("blink.cmp").setup({})
 require("illuminate").configure({})
 require("lazydev").setup({})
