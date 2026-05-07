@@ -59,14 +59,18 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 -- mini
 
 require("mini.ai").setup()
+
 require("mini.diff").setup({
   view = {
     style = "sign",
     signs = { add = "┃", change = "┃", delete = "▁" },
   },
 })
+
 require("mini.statusline").setup()
+
 require("mini.misc").setup_auto_root()
+
 require("mini.trailspace").setup()
 local starter = require("mini.starter")
 starter.setup({
@@ -77,23 +81,33 @@ starter.setup({
     starter.sections.recent_files(5, true),
   },
 })
+
 require("mini.bufremove").setup()
+vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
+vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
+
 require("mini.notify").setup()
+
 local indentscope = require("mini.indentscope")
 indentscope.setup({
   draw = { animation = indentscope.gen_animation.none() },
   options = { try_as_border = true },
   symbol = "│",
 })
+
 require("mini.basics").setup({
   options = { basic = true, extra_ui = true },
   mappings = { basic = true, windows = true },
 })
+
 require("mini.bracketed").setup()
+
 require("mini.move").setup()
+
 require("mini.surround").setup({
   mappings = { add = 'ys', delete = 'ds', replace = 'cs' }
 })
+
 require('mini.pick').setup({})
 require('mini.extra').setup({})
 vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
@@ -105,9 +119,6 @@ vim.keymap.set("n", "<leader>gd", function() MiniExtra.pickers.lsp({ scope = "de
 vim.keymap.set("n", "<leader>gi", function() MiniExtra.pickers.lsp({ scope = "implementation" }) end)
 vim.keymap.set("n", "<leader>gr", function() MiniExtra.pickers.lsp({ scope = "references" }) end)
 vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
-
-vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
-vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
 
 -- yanky / substitute
 
