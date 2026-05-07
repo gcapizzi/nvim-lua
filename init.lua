@@ -6,7 +6,6 @@ vim.pack.add({
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
-  "https://github.com/stevearc/oil.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
@@ -120,6 +119,9 @@ vim.keymap.set("n", "<leader>gi", function() MiniExtra.pickers.lsp({ scope = "im
 vim.keymap.set("n", "<leader>gr", function() MiniExtra.pickers.lsp({ scope = "references" }) end)
 vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
 
+require('mini.files').setup({ options = { permanent_delete = false } })
+vim.keymap.set("n", "<leader>o", function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end)
+
 -- yanky / substitute
 
 require("yanky").setup()
@@ -141,14 +143,6 @@ vim.keymap.set("n", "s", substitute.operator, { noremap = true })
 vim.keymap.set("n", "ss", substitute.line, { noremap = true })
 vim.keymap.set("n", "S", substitute.eol, { noremap = true })
 vim.keymap.set("x", "s", substitute.visual, { noremap = true })
-
--- oil
-
-require("oil").setup({
-  delete_to_trash = true
-})
-
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 
 -- vim-test
 
