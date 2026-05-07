@@ -11,7 +11,6 @@ vim.pack.add({
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
   "https://github.com/akinsho/bufferline.nvim",
-  "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-fugitive",
@@ -46,6 +45,7 @@ vim.lsp.config("sorbet", {
 vim.lsp.enable("sorbet")
 
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- diagnostics
 
@@ -94,6 +94,17 @@ require("mini.move").setup()
 require("mini.surround").setup({
   mappings = { add = 'ys', delete = 'ds', replace = 'cs' }
 })
+require('mini.pick').setup({})
+require('mini.extra').setup({})
+vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
+vim.keymap.set("n", "<leader>fr", MiniExtra.pickers.oldfiles)
+vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live)
+vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
+vim.keymap.set("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end)
+vim.keymap.set("n", "<leader>gd", function() MiniExtra.pickers.lsp({ scope = "definition" }) end)
+vim.keymap.set("n", "<leader>gi", function() MiniExtra.pickers.lsp({ scope = "implementation" }) end)
+vim.keymap.set("n", "<leader>gr", function() MiniExtra.pickers.lsp({ scope = "references" }) end)
+vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
 
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
@@ -156,31 +167,6 @@ vim.keymap.set("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>")
 vim.keymap.set("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>")
 vim.keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>")
 vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>")
-
--- fzf-lua
-
-local fzf_lua = require("fzf-lua")
-fzf_lua.setup({
-  actions = {
-    files = {
-      ["enter"] = fzf_lua.actions.file_edit,
-    },
-  }
-})
-fzf_lua.register_ui_select()
-
-vim.keymap.set("n", "<leader>ff", fzf_lua.global)
-vim.keymap.set("n", "<leader>fr", fzf_lua.oldfiles)
-vim.keymap.set("n", "<leader>fg", fzf_lua.live_grep)
-vim.keymap.set("n", "<leader>fw", fzf_lua.grep_cword)
-vim.keymap.set("n", "<leader>fG", fzf_lua.grep)
-vim.keymap.set("n", "<leader>fb", fzf_lua.buffers)
-vim.keymap.set("n", "<leader>fs", fzf_lua.lsp_workspace_symbols)
-vim.keymap.set("n", "<leader>gd", fzf_lua.lsp_definitions)
-vim.keymap.set("n", "<leader>gi", fzf_lua.lsp_implementations)
-vim.keymap.set("n", "<leader>gr", fzf_lua.lsp_references)
-vim.keymap.set("n", "<leader>ca", fzf_lua.lsp_code_actions)
-vim.keymap.set("n", "<leader>fl", fzf_lua.resume)
 
 -- conform
 
