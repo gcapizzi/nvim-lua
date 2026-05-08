@@ -59,6 +59,17 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 
 require("mini.ai").setup()
 
+require("mini.basics").setup({
+  options = { basic = true, extra_ui = true },
+  mappings = { basic = true, windows = true },
+})
+
+require("mini.bracketed").setup()
+
+require("mini.bufremove").setup()
+vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
+vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
+
 require("mini.diff").setup({
   view = {
     style = "sign",
@@ -66,9 +77,36 @@ require("mini.diff").setup({
   },
 })
 
-require("mini.statusline").setup()
+require("mini.files").setup({ options = { permanent_delete = false } })
+vim.keymap.set("n", "<leader>o", function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end)
+
+local indentscope = require("mini.indentscope")
+indentscope.setup({
+  draw = { animation = indentscope.gen_animation.none() },
+  options = { try_as_border = true },
+  symbol = "│",
+})
 
 require("mini.misc").setup_auto_root()
+
+require("mini.move").setup()
+
+require("mini.notify").setup()
+
+require("mini.pick").setup({})
+require("mini.extra").setup({})
+vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
+vim.keymap.set("n", "<leader>fr", MiniExtra.pickers.oldfiles)
+vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live)
+vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
+vim.keymap.set("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end)
+vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
+
+require("mini.statusline").setup()
+
+require("mini.surround").setup({
+  mappings = { add = "ys", delete = "ds", replace = "cs" }
+})
 
 require("mini.trailspace").setup()
 local starter = require("mini.starter")
@@ -80,44 +118,6 @@ starter.setup({
     starter.sections.recent_files(5, true),
   },
 })
-
-require("mini.bufremove").setup()
-vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
-vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
-
-require("mini.notify").setup()
-
-local indentscope = require("mini.indentscope")
-indentscope.setup({
-  draw = { animation = indentscope.gen_animation.none() },
-  options = { try_as_border = true },
-  symbol = "│",
-})
-
-require("mini.basics").setup({
-  options = { basic = true, extra_ui = true },
-  mappings = { basic = true, windows = true },
-})
-
-require("mini.bracketed").setup()
-
-require("mini.move").setup()
-
-require("mini.surround").setup({
-  mappings = { add = "ys", delete = "ds", replace = "cs" }
-})
-
-require("mini.pick").setup({})
-require("mini.extra").setup({})
-vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
-vim.keymap.set("n", "<leader>fr", MiniExtra.pickers.oldfiles)
-vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live)
-vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
-vim.keymap.set("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end)
-vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
-
-require("mini.files").setup({ options = { permanent_delete = false } })
-vim.keymap.set("n", "<leader>o", function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end)
 
 -- yanky / substitute
 
