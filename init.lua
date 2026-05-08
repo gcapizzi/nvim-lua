@@ -3,7 +3,6 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
-  "https://github.com/folke/lazydev.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/RRethy/vim-illuminate",
@@ -36,6 +35,14 @@ vim.lsp.config("sorbet", {
 })
 vim.lsp.enable("sorbet")
 
+vim.lsp.config("lua_ls", {
+  on_init = function(client)
+    client.config.settings.Lua.workspace = {
+      library = vim.api.nvim_get_runtime_file("", true),
+    }
+  end,
+})
+
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
@@ -52,6 +59,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+
+require("illuminate").configure()
 
 -- diagnostics
 
@@ -186,8 +195,3 @@ vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>")
 require("ibl").setup({
   indent = { char = "│" }
 })
-
--- others
-
-require("illuminate").configure()
-require("lazydev").setup()
