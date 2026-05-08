@@ -6,7 +6,6 @@ vim.pack.add({
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
-  "https://github.com/stevearc/conform.nvim",
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
   "https://github.com/akinsho/bufferline.nvim",
@@ -45,6 +44,20 @@ vim.lsp.enable("sorbet")
 
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    if not client:supports_method("textDocument/willSaveWaitUntil") and client:supports_method("textDocument/formatting") then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
 
 -- diagnostics
 
@@ -169,15 +182,6 @@ vim.keymap.set("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>")
 vim.keymap.set("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>")
 vim.keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>")
 vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>")
-
--- conform
-
-require("conform").setup({
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  },
-})
 
 -- indent-blankline
 
