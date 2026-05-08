@@ -9,8 +9,6 @@ vim.pack.add({
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
   "https://github.com/akinsho/bufferline.nvim",
-  "https://github.com/tpope/vim-eunuch",
-  "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/tpope/vim-rhubarb",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
