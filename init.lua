@@ -79,7 +79,7 @@ require("mini.bufremove").setup()
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
 
-require("mini.completion").setup({})
+require("mini.completion").setup()
 
 require("mini.diff").setup({
   view = {
@@ -98,7 +98,7 @@ indentscope.setup({
   symbol = "│",
 })
 
-require("mini.icons").setup({})
+require("mini.icons").setup()
 
 require("mini.misc").setup_auto_root()
 
@@ -106,8 +106,8 @@ require("mini.move").setup()
 
 require("mini.notify").setup()
 
-require("mini.pick").setup({})
-require("mini.extra").setup({})
+require("mini.pick").setup()
+require("mini.extra").setup()
 vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
 vim.keymap.set("n", "<leader>fr", MiniExtra.pickers.oldfiles)
 vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live)
@@ -191,5 +191,5 @@ require("ibl").setup({
 
 -- others
 
-require("illuminate").configure({})
-require("lazydev").setup({})
+require("illuminate").configure()
+require("lazydev").setup()
