@@ -26,10 +26,6 @@ vim.g.mapleader = ","
 vim.keymap.set("n", "<leader>bn", "<cmd>enew<cr>")
 vim.keymap.set("n", "<leader>pu", vim.pack.update)
 
-vim.o.complete = ".,w,b,o"
-vim.o.autocomplete = true
-vim.o.autocompletedelay = 500
-
 -- lsp
 
 require("mason").setup()
@@ -82,6 +78,8 @@ require("mini.bracketed").setup()
 require("mini.bufremove").setup()
 vim.keymap.set("n", "<leader>bd", function() MiniBufremove.delete() end)
 vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end)
+
+require("mini.completion").setup({})
 
 require("mini.diff").setup({
   view = {
