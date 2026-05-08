@@ -98,6 +98,8 @@ indentscope.setup({
   symbol = "│",
 })
 
+require("mini.icons").setup({})
+
 require("mini.misc").setup_auto_root()
 
 require("mini.move").setup()
