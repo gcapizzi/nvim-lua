@@ -104,11 +104,11 @@ require("mini.bracketed").setup()
 require("mini.move").setup()
 
 require("mini.surround").setup({
-  mappings = { add = 'ys', delete = 'ds', replace = 'cs' }
+  mappings = { add = "ys", delete = "ds", replace = "cs" }
 })
 
-require('mini.pick').setup({})
-require('mini.extra').setup({})
+require("mini.pick").setup({})
+require("mini.extra").setup({})
 vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files)
 vim.keymap.set("n", "<leader>fr", MiniExtra.pickers.oldfiles)
 vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live)
@@ -116,7 +116,7 @@ vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
 vim.keymap.set("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end)
 vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
 
-require('mini.files').setup({ options = { permanent_delete = false } })
+require("mini.files").setup({ options = { permanent_delete = false } })
 vim.keymap.set("n", "<leader>o", function() MiniFiles.open(vim.api.nvim_buf_get_name(0)) end)
 
 -- yanky / substitute
