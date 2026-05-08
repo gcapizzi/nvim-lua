@@ -128,7 +128,6 @@ require("mini.surround").setup({
   mappings = { add = "ys", delete = "ds", replace = "cs" }
 })
 
-require("mini.trailspace").setup()
 local starter = require("mini.starter")
 starter.setup({
   evaluate_single = true,
@@ -138,6 +137,8 @@ starter.setup({
     starter.sections.recent_files(5, true),
   },
 })
+
+require("mini.trailspace").setup()
 
 -- yanky / substitute
 
