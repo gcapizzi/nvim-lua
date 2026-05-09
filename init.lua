@@ -122,12 +122,6 @@ vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
 vim.keymap.set("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "workspace_symbol_live" }) end)
 vim.keymap.set("n", "<leader>fl", MiniPick.builtin.resume)
 
-require("mini.statusline").setup()
-
-require("mini.surround").setup({
-  mappings = { add = "ys", delete = "ds", replace = "cs" }
-})
-
 local starter = require("mini.starter")
 starter.setup({
   evaluate_single = true,
@@ -136,6 +130,12 @@ starter.setup({
     starter.sections.recent_files(5, false),
     starter.sections.recent_files(5, true),
   },
+})
+
+require("mini.statusline").setup()
+
+require("mini.surround").setup({
+  mappings = { add = "ys", delete = "ds", replace = "cs" }
 })
 
 require("mini.trailspace").setup()
