@@ -7,8 +7,6 @@ vim.pack.add({
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
-  "https://github.com/tpope/vim-fugitive",
-  "https://github.com/tpope/vim-rhubarb",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" },
 })

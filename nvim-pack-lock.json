@@ -28,17 +28,9 @@
       "rev": "0d2077398552f069abccbd964a26dd7cd26882cd",
       "src": "https://github.com/gbprod/substitute.nvim"
     },
-    "vim-fugitive": {
-      "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
-      "src": "https://github.com/tpope/vim-fugitive"
-    },
     "vim-illuminate": {
       "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
       "src": "https://github.com/RRethy/vim-illuminate"
-    },
-    "vim-rhubarb": {
-      "rev": "5496d7c94581c4c9ad7430357449bb57fc59f501",
-      "src": "https://github.com/tpope/vim-rhubarb"
     },
     "vim-test": {
       "rev": "7062b50979a28e804081f0e82b7321184ec1c20b",
