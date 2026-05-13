@@ -7,7 +7,6 @@ vim.pack.add({
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/RRethy/vim-illuminate",
   "https://github.com/vim-test/vim-test",
-  "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/tpope/vim-rhubarb",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
@@ -17,6 +16,7 @@ vim.pack.add({
 -- base
 
 vim.cmd.colorscheme("catppuccin-macchiato")
+vim.api.nvim_set_hl(0, "MiniTablineCurrent", { link = "TabLineSel" })
 
 vim.g.mapleader = ","
 
@@ -140,6 +140,8 @@ require("mini.surround").setup({
 
 require("mini.trailspace").setup()
 
+require("mini.tabline").setup()
+
 -- yanky / substitute
 
 require("yanky").setup()
@@ -167,29 +169,6 @@ vim.keymap.set("x", "s", substitute.visual, { noremap = true })
 vim.keymap.set("n", "<leader>tf", "<cmd>TestFile<cr>")
 vim.keymap.set("n", "<leader>tl", "<cmd>TestLast<cr>")
 vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<cr>")
-
--- bufferline
-
-require("bufferline").setup({
-  options = {
-    show_buffer_icons = false,
-    show_buffer_close_icons = false,
-    custom_filter = function(buf)
-      return vim.bo[buf].filetype ~= "qf"
-    end
-  }
-})
-
-vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<cr>")
-vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<cr>")
-vim.keymap.set("n", "]B", "<cmd>BufferLineGoToBuffer -1<cr>")
-vim.keymap.set("n", "[B", "<cmd>BufferLineGoToBuffer 1<cr>")
-vim.keymap.set("n", "]v", "<cmd>BufferLineMoveNext<cr>")
-vim.keymap.set("n", "[v", "<cmd>BufferLineMovePrev<cr>")
-vim.keymap.set("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>")
-vim.keymap.set("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>")
-vim.keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>")
-vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>")
 
 -- indent-blankline
 
