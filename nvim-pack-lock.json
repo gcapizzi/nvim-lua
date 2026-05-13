@@ -9,7 +9,7 @@
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "1423254f58a3407a5afd5ade0ccd901f3eecc6ba",
+      "rev": "eaa34887d444cb002e1b165fac399ae4bbc771f7",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -17,11 +17,11 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
+      "rev": "17c448b0f3f29c0857a3436fc64e1d7cb9267ec3",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "cd576dd72d31ddffcbfa6d064c0dd697ca218758",
+      "rev": "75e49cfa588a89ca667d767c0afef3ceac205faa",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "substitute.nvim": {
