@@ -32,10 +32,6 @@
       "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
       "src": "https://github.com/RRethy/vim-illuminate"
     },
-    "vim-test": {
-      "rev": "7062b50979a28e804081f0e82b7321184ec1c20b",
-      "src": "https://github.com/vim-test/vim-test"
-    },
     "yanky.nvim": {
       "rev": "784188e0a7363e762e53140f39124d786aec0832",
       "src": "https://github.com/gbprod/yanky.nvim"

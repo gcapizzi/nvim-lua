@@ -6,7 +6,6 @@ vim.pack.add({
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
   "https://github.com/RRethy/vim-illuminate",
-  "https://github.com/vim-test/vim-test",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" },
 })
@@ -162,12 +161,6 @@ vim.keymap.set("n", "s", substitute.operator, { noremap = true })
 vim.keymap.set("n", "ss", substitute.line, { noremap = true })
 vim.keymap.set("n", "S", substitute.eol, { noremap = true })
 vim.keymap.set("x", "s", substitute.visual, { noremap = true })
-
--- vim-test
-
-vim.keymap.set("n", "<leader>tf", "<cmd>TestFile<cr>")
-vim.keymap.set("n", "<leader>tl", "<cmd>TestLast<cr>")
-vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<cr>")
 
 -- indent-blankline
 
