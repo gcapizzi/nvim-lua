@@ -5,7 +5,6 @@ vim.pack.add({
   "https://github.com/mason-org/mason-lspconfig.nvim",
   "https://github.com/gbprod/yanky.nvim",
   "https://github.com/gbprod/substitute.nvim",
-  "https://github.com/RRethy/vim-illuminate",
   { src = "https://github.com/catppuccin/nvim",                     name = "catppuccin" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim", name = "ibl" },
 })
@@ -46,6 +45,7 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
     if not client:supports_method("textDocument/willSaveWaitUntil") and client:supports_method("textDocument/formatting") then
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = ev.buf,
@@ -54,10 +54,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+
+    if client:supports_method("textDocument/documentHighlight") then
+      vim.api.nvim_create_autocmd("CursorHold", { callback = vim.lsp.buf.document_highlight, buffer = ev.buf })
+      vim.api.nvim_create_autocmd("CursorMoved", { callback = vim.lsp.buf.clear_references, buffer = ev.buf })
+    end
   end,
 })
-
-require("illuminate").configure()
 
 -- diagnostics
 
