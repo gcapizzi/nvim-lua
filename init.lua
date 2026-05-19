@@ -73,7 +73,9 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
 
 -- mini
 
-require("mini.ai").setup()
+require("mini.ai").setup({
+  n_lines = 500,
+})
 
 require("mini.basics").setup({
   options = { basic = true, extra_ui = true },
